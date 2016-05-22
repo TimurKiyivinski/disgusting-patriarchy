@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.javalite:activejdbc:1.4.11" level="project" />
+    <orderEntry type="library" name="org.mariadb.jdbc:mariadb-java-client:1.4.5" level="project" />
   </component>
 </module>
