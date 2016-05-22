@@ -1,12 +1,14 @@
 package com.Kiyivinski.models;
 
+import com.Kiyivinski.interfaces.SemesterInterface;
+import com.Kiyivinski.interfaces.TypeInterface;
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.Table;
 
 import java.util.List;
 
 @Table("assessments")
-public class Assessment extends Model {
+public class Assessment extends Model implements TypeInterface, SemesterInterface {
     public static Assessment create(String name, String mark, String type_id, String semester_id) {
         Assessment assessment = new Assessment();
         assessment.set("name", name);
@@ -21,13 +23,29 @@ public class Assessment extends Model {
         return Assessment.findAll();
     }
 
-    // region SETTER
+    // region GETTER
     public String getName() {
         return this.get("name").toString();
     }
 
     public String getMark() {
         return this.get("mark").toString();
+    }
+
+    public String getTypeID() {
+        return this.get("type_id").toString();
+    }
+
+    public Type getType() {
+        return Type.find(this.getTypeID());
+    }
+
+    public String getSemesterID() {
+        return this.get("semester_id").toString();
+    }
+
+    public Semester getSemester() {
+        return Semester.find(this.getSemesterID());
     }
     // TODO: Implement from interface
     // endregion
