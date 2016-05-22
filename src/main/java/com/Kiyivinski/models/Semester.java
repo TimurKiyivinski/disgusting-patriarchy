@@ -18,14 +18,19 @@ public class Semester extends Model {
         return Semester.findAll();
     }
 
+    // region GETTER
     public String getName() {
         return this.get("name").toString();
     }
+    // endregion
 
+    // region SETTER
     public void setName(String name) {
         this.set("name", name).saveIt();
     }
+    // endregion
 
+    // region QUERY
     public static Semester find(String id) {
         List<Semester> courses = Semester.where("id = '" + id + "'");
         return courses.get(0);
@@ -34,4 +39,5 @@ public class Semester extends Model {
     public static List<Semester> whereName(String name) {
         return Student.where("name = '" + name + "'");
     }
+    // endregion
 }

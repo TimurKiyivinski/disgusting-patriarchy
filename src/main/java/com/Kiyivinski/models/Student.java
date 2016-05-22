@@ -7,7 +7,6 @@ import java.util.List;
 
 @Table("students")
 public class Student extends Model {
-
     public static Student create(String name, String identification, String course_id) {
         Student student = new Student();
         student.set("name", name);
@@ -21,6 +20,7 @@ public class Student extends Model {
         return Student.findAll();
     }
 
+    // region GETTER
     public String getName() {
         return this.get("name").toString();
     }
@@ -28,7 +28,9 @@ public class Student extends Model {
     public String getIdentification() {
         return this.get("identification").toString();
     }
+    // endregion
 
+    // region SETTER
     public void setName(String name) {
         this.set("name", name).saveIt();
     }
@@ -40,7 +42,9 @@ public class Student extends Model {
     public void setCourse(String course_id) {
         this.set("course_id", course_id).saveIt();
     }
+    // endregion
 
+    // region QUERY
     public static Student find(String id) {
         List<Student> students = Student.where("id = '" + id + "'");
         return students.get(0);
@@ -57,4 +61,5 @@ public class Student extends Model {
     public static List<Student> whereCourse(String course_id) {
         return Student.where("course_id = '" + course_id + "'");
     }
+    // endregion
 }

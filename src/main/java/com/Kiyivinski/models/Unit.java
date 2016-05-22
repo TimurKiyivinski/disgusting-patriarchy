@@ -19,6 +19,7 @@ public class Unit extends Model {
         return Unit.findAll();
     }
 
+    // region GETTER
     public String getName() {
         return this.get("name").toString();
     }
@@ -26,7 +27,9 @@ public class Unit extends Model {
     public String getCode() {
         return this.get("code").toString();
     }
+    // endregion
 
+    // region SETTER
     public void setName(String name) {
         this.set("name", name).saveIt();
     }
@@ -34,7 +37,9 @@ public class Unit extends Model {
     public void setCode(String code) {
         this.set("code", code).saveIt();
     }
+    // endregion
 
+    // region SETTER
     public static Unit find(String id) {
         List<Unit> courses = Unit.where("id = '" + id + "'");
         return courses.get(0);
@@ -43,4 +48,9 @@ public class Unit extends Model {
     public static List<Unit> whereName(String name) {
         return Student.where("name = '" + name + "'");
     }
+
+    public static List<Unit> whereCode(String code) {
+        return Student.where("code = '" + code + "'");
+    }
+    // endregion
 }
