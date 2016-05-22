@@ -5,17 +5,17 @@ import org.javalite.activejdbc.annotations.Table;
 
 import java.util.List;
 
-@Table("types")
-public class Type extends Model {
-    public static Type create(String name) {
-        Type course = new Type();
+@Table("courses")
+public class Course extends Model {
+    public static Course create(String name) {
+        Course course = new Course();
         course.set("name", name);
         course.saveIt();
         return course;
     }
 
-    public static List<Type> all() {
-        return Type.findAll();
+    public static List<Course> all() {
+        return Course.findAll();
     }
 
     public String getName() {
@@ -26,12 +26,12 @@ public class Type extends Model {
         this.set("name", name).saveIt();
     }
 
-    public static Type find(String id) {
-        List<Type> courses = Type.where("id = '" + id + "'");
+    public static Course find(String id) {
+        List<Course> courses = Course.where("id = '" + id + "'");
         return courses.get(0);
     }
 
-    public static List<Type> whereName(String name) {
+    public static List<Course> whereName(String name) {
         return Student.where("name = '" + name + "'");
     }
 }
