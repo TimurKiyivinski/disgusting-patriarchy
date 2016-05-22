@@ -1,12 +1,13 @@
 package com.Kiyivinski.models;
 
+import com.Kiyivinski.interfaces.CourseInterface;
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.Table;
 
 import java.util.List;
 
 @Table("students")
-public class Student extends Model {
+public class Student extends Model implements CourseInterface {
     public static Student create(String name, String identification, String course_id) {
         Student student = new Student();
         student.set("name", name);
@@ -25,8 +26,17 @@ public class Student extends Model {
         return this.get("name").toString();
     }
 
-    public String getIdentification() {
+    public String getIdentification()
+    {
         return this.get("identification").toString();
+    }
+
+    public String getCourseID() {
+        return this.get("course_id").toString();
+    }
+
+    public Course getCourse() {
+        return Course.find(this.getCourseID());
     }
     // endregion
 

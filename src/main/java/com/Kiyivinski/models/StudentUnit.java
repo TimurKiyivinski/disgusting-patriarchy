@@ -1,12 +1,15 @@
 package com.Kiyivinski.models;
 
+import com.Kiyivinski.interfaces.SemesterInterface;
+import com.Kiyivinski.interfaces.StudentInterface;
+import com.Kiyivinski.interfaces.UnitInterface;
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.Table;
 
 import java.util.List;
 
 @Table("student_units")
-public class StudentUnit extends Model {
+public class StudentUnit extends Model implements StudentInterface, UnitInterface, SemesterInterface {
     public static StudentUnit create(String student_id, String unit_id, String semester_id) {
         StudentUnit studentUnit = new StudentUnit();
         studentUnit.set("student_id", student_id);
@@ -21,7 +24,29 @@ public class StudentUnit extends Model {
     }
 
     // region GETTER
-    // TODO: Implement from interface
+    public String getStudentID() {
+        return this.get("student_id").toString();
+    }
+
+    public Student getStudent() {
+        return Student.find(this.getStudentID());
+    }
+
+    public String getUnitID() {
+        return this.get("unit_id").toString();
+    }
+
+    public Unit getUnit() {
+        return Unit.find(this.getUnitID());
+    }
+
+    public String getSemesterID() {
+        return this.get("semester_Id").toString();
+    }
+
+    public Semester getSemester() {
+        return Semester.find(this.getSemesterID());
+    }
     // endregion
 
     // region SETTER

@@ -1,12 +1,14 @@
 package com.Kiyivinski.models;
 
+import com.Kiyivinski.interfaces.AssessmentInterface;
+import com.Kiyivinski.interfaces.StudentInterface;
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.Table;
 
 import java.util.List;
 
 @Table("student_assessments")
-public class StudentAssessment extends Model {
+public class StudentAssessment extends Model implements StudentInterface, AssessmentInterface {
     public static StudentAssessment create(String student_id, String assessment_id, String grade) {
         StudentAssessment studentAssessment = new StudentAssessment();
         studentAssessment.set("student_id", student_id);
@@ -24,7 +26,22 @@ public class StudentAssessment extends Model {
     public String getGrade() {
         return this.get("grade").toString();
     }
-    // TODO: Implement from interface
+
+    public String getStudentID() {
+        return this.get("student_id").toString();
+    }
+
+    public Student getStudent() {
+        return Student.find(this.getStudentID());
+    }
+
+    public String getAssessmentID() {
+        return this.get("assessment_id").toString();
+    }
+
+    public Assessment getAssessment() {
+        return Assessment.find(this.getAssessmentID());
+    }
     // endregion
 
     // region SETTER
