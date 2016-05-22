@@ -16,26 +16,19 @@ public class MainFrame extends JFrame {
     private void createLayout() {
         JTabbedPane layout = new JTabbedPane();
 
-        JPanel panelStudents = new JPanel();
-        panelStudents.add(new JButton("Students"));
+        JPanel studentPanel = new StudentPanel();
+        JPanel assessmentPanel = new AssessmentPanel();
+        JPanel unitPanel = new UnitPanel();
+        JPanel semesterPanel = new SemesterPanel();
+        JPanel coursePanel = new CoursePanel();
 
-        JPanel panelAssessments = new JPanel();
-        panelAssessments.add(new JButton("Assessments"));
+        layout.addTab("Student", studentPanel);
+        layout.addTab("Assessment", assessmentPanel);
+        layout.addTab("Units", unitPanel);
+        layout.addTab("Semesters", semesterPanel);
+        layout.addTab("Courses", coursePanel);
 
-        JPanel panelUnits = new JPanel();
-        panelUnits.add(new JButton("Units"));
-
-        JPanel panelCourses = new JPanel();
-        panelCourses.add(new JButton("Courses"));
-
-        JPanel panelSemesters = new JPanel();
-       panelSemesters.add(new JButton("Semesters"));
-
-        layout.addTab("Students", panelStudents);
-        layout.addTab("Assessments", panelAssessments);
-        layout.addTab("Units", panelUnits);
-        layout.addTab("Courses", panelCourses);
-        layout.addTab("Semesters", panelSemesters);
+        layout.setTabPlacement(SwingConstants.LEFT);
 
         this.add(layout);
     }
