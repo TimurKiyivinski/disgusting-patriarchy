@@ -18,14 +18,19 @@ public class Course extends Model {
         return Course.findAll();
     }
 
+    // region GETTER
     public String getName() {
         return this.get("name").toString();
     }
+    // endregion
 
+    // region SETTER
     public void setName(String name) {
         this.set("name", name).saveIt();
     }
+    // endregion
 
+    // region QUERY
     public static Course find(String id) {
         List<Course> courses = Course.where("id = '" + id + "'");
         return courses.get(0);
@@ -34,4 +39,5 @@ public class Course extends Model {
     public static List<Course> whereName(String name) {
         return Student.where("name = '" + name + "'");
     }
+    // endregion
 }
