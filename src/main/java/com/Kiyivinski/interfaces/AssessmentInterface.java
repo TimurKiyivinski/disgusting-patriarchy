@@ -4,5 +4,5 @@ import com.Kiyivinski.models.Assessment;
 
 public interface AssessmentInterface {
     public String getAssessmentID();
-    public Assessment getAssessment(String assessment_id);
+    public Assessment getAssessment();
 }
