@@ -1,19 +1,28 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.LoginInputListener;
+
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DatabasePanel extends JPanel {
+    private final int TEXT_LENGTH = 48;
+
+    private String database;
+    private String user;
+    private String password;
+
     DatabasePanel() {
         SpringLayout layout = new SpringLayout();
         this.setLayout(layout);
 
         JLabel labelDatabase = new JLabel("Database Address:");
-        JTextField inputDatabase = new JTextField("192.168.99.100:3306/java", 32);
-        JLabel labelUser = new JLabel("Username:");
-        JTextField inputUser = new JTextField("root", 32);
+        final JTextField inputDatabase = new JTextField("192.168.99.100:3306/java", this.TEXT_LENGTH);
+        final JLabel labelUser = new JLabel("Username:");
+        JTextField inputUser = new JTextField("root", this.TEXT_LENGTH);
         JLabel labelPassword = new JLabel("Password:");
-        JPasswordField inputPassword = new JPasswordField("password", 32);
+        JPasswordField inputPassword = new JPasswordField("password", this.TEXT_LENGTH);
         JButton submit = new JButton("Connect");
 
         this.add(labelDatabase);
@@ -41,5 +50,25 @@ public class DatabasePanel extends JPanel {
 
         layout.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, inputPassword);
         layout.putConstraint(SpringLayout.NORTH, submit, 28, SpringLayout.NORTH, inputPassword);
+
+        submit.putClientProperty("database", inputDatabase.getText());
+        submit.putClientProperty("user", inputUser.getText());
+        submit.putClientProperty("password", inputPassword.getPassword());
+
+        inputDatabase.getDocument().addDocumentListener(
+                new LoginInputListener("database", inputDatabase, submit)
+        );
+        inputUser.getDocument().addDocumentListener(
+                new LoginInputListener("user", inputUser, submit)
+        );
+        inputPassword.getDocument().addDocumentListener(
+                new LoginInputListener("password", inputPassword, submit)
+        );
+
+        submit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(((JButton) e.getSource()).getClientProperty("database"));
+            }
+        });
     }
 }

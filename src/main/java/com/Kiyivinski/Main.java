@@ -1,11 +1,9 @@
 package com.Kiyivinski;
 
 import com.Kiyivinski.graphical.MainFrame;
-import com.Kiyivinski.models.*;
 import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
-import java.util.List;
 
 public class Main {
 
