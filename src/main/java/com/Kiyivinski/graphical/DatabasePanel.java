@@ -2,13 +2,14 @@ package com.Kiyivinski.graphical;
 
 import com.Kiyivinski.graphical.listeners.LoginButtonListener;
 import com.Kiyivinski.graphical.listeners.LoginInputListener;
+import com.Kiyivinski.graphical.listeners.LoginInterface;
 
 import javax.swing.*;
 
 public class DatabasePanel extends JPanel {
     private final int TEXT_LENGTH = 48;
 
-    DatabasePanel() {
+    DatabasePanel(LoginInterface observer) {
         SpringLayout layout = new SpringLayout();
         this.setLayout(layout);
 
@@ -60,6 +61,6 @@ public class DatabasePanel extends JPanel {
                 new LoginInputListener("password", inputPassword, submit)
         );
 
-        submit.addActionListener(new LoginButtonListener(inputDatabase, inputUser, inputPassword));
+        submit.addActionListener(new LoginButtonListener(inputDatabase, inputUser, inputPassword, observer));
     }
 }

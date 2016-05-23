@@ -11,11 +11,13 @@ public class LoginButtonListener implements ActionListener {
     private JTextField inputDatabase;
     private JTextField inputUser;
     private JTextField inputPassword;
+    private LoginInterface observer;
 
-    public LoginButtonListener(JTextField inputDatabase, JTextField inputUser, JTextField inputPassword) {
+    public LoginButtonListener(JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, LoginInterface observer) {
         this.inputDatabase = inputDatabase;
         this.inputUser= inputUser;
         this.inputPassword = inputPassword;
+        this.observer = observer;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -25,6 +27,7 @@ public class LoginButtonListener implements ActionListener {
         String password = submit.getClientProperty("password").toString();
         try {
             Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
+            this.observer.login();
         } catch (Exception exception) {
             this.inputDatabase.setForeground(Color.RED);
             this.inputUser.setForeground(Color.RED);

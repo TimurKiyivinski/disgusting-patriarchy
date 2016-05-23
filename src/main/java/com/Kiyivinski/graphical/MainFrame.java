@@ -1,9 +1,11 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.LoginInterface;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements LoginInterface {
     private JTabbedPane layout;
 
     public MainFrame() {
@@ -21,7 +23,7 @@ public class MainFrame extends JFrame {
 
     private void createLoginLayout() {
 
-        JPanel databasePanel = new DatabasePanel();
+        JPanel databasePanel = new DatabasePanel(this);
         this.layout.addTab("Database", databasePanel);
         this.layout.setTabPlacement(SwingConstants.LEFT);
 
@@ -39,5 +41,10 @@ public class MainFrame extends JFrame {
         this.layout.addTab("Units", unitPanel);
         this.layout.addTab("Semesters", semesterPanel);
         this.layout.addTab("Courses", coursePanel);
+    }
+
+    public void login() {
+        this.layout.removeTabAt(0);
+        this.createMainLayout();
     }
 }
