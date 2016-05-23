@@ -8,10 +8,6 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO: Variable connection settings
-        // Open database connection
-        Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://192.168.99.100:3306/java", "root", "password");
-
         try {
             UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
         }
@@ -23,10 +19,6 @@ public class Main {
         }
         catch (IllegalAccessException e) {
         }
-
         MainFrame mainFrame = new MainFrame();
-
-        // Close database connection
-        Base.close();
     }
 }
