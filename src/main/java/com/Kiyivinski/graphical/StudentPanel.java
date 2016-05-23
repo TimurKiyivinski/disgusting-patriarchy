@@ -19,6 +19,7 @@ public class StudentPanel extends JPanel {
 
         JScrollPane panelLeft = new JScrollPane(studentPane);
         JPanel panelRight = new JPanel();
+        studentPane.setUpdatePanel(panelRight);
 
         SpringLayout rightPane = new StudentForm(panelRight);
         panelRight.setLayout(rightPane);

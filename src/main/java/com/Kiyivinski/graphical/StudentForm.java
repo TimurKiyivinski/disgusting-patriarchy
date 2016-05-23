@@ -1,17 +1,29 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.models.Student;
+
 import javax.swing.*;
 
 public class StudentForm extends SpringLayout {
     private final int TEXT_LENGTH = 14;
 
-    StudentForm(JPanel parent) {
+    public StudentForm(JPanel parent, Student modifyStudent) {
         JLabel labelName = new JLabel("Name:");
-        JTextField inputName = new JTextField("", this.TEXT_LENGTH);
+        JTextField inputName;
         JLabel labelIdentification = new JLabel("Student ID:");
-        JTextField inputIdentification = new JTextField("", this.TEXT_LENGTH);
+        JTextField inputIdentification;
         JLabel labelCourse = new JLabel("Course:");
         JComboBox inputCourse = new CourseComboBox();
+        JButton submit;
+        if (modifyStudent == null) {
+            submit = new JButton("Create");
+            inputName  = new JTextField("", this.TEXT_LENGTH);
+            inputIdentification = new JTextField("", this.TEXT_LENGTH);
+        } else {
+            submit = new JButton("Modify");
+            inputName  = new JTextField(modifyStudent.getName(), this.TEXT_LENGTH);
+            inputIdentification = new JTextField(modifyStudent.getIdentification(), this.TEXT_LENGTH);
+        }
 
         parent.add(labelName);
         parent.add(inputName);
@@ -19,6 +31,7 @@ public class StudentForm extends SpringLayout {
         parent.add(inputIdentification);
         parent.add(labelCourse);
         parent.add(inputCourse);
+        parent.add(submit);
 
         this.putConstraint(SpringLayout.WEST, labelName, 5, SpringLayout.WEST, parent);
         this.putConstraint(SpringLayout.NORTH, labelName, 25, SpringLayout.NORTH, parent);
@@ -34,5 +47,12 @@ public class StudentForm extends SpringLayout {
         this.putConstraint(SpringLayout.NORTH, labelCourse, 30, SpringLayout.NORTH, labelIdentification);
         this.putConstraint(SpringLayout.WEST , inputCourse, 0, SpringLayout.WEST, inputIdentification);
         this.putConstraint(SpringLayout.NORTH, inputCourse, 28, SpringLayout.NORTH, inputIdentification);
+
+        this.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, inputCourse);
+        this.putConstraint(SpringLayout.NORTH, submit, 28, SpringLayout.NORTH, inputCourse);
+    }
+
+    StudentForm(JPanel parent) {
+        this(parent, null);
     }
 }
