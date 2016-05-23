@@ -14,8 +14,8 @@ public class DatabasePanel extends JPanel {
         this.setLayout(layout);
 
         JLabel labelDatabase = new JLabel("Database Address:");
-        final JTextField inputDatabase = new JTextField("192.168.99.100:3306/java", this.TEXT_LENGTH);
-        final JLabel labelUser = new JLabel("Username:");
+        JTextField inputDatabase = new JTextField("192.168.99.100:3306/java", this.TEXT_LENGTH);
+        JLabel labelUser = new JLabel("Username:");
         JTextField inputUser = new JTextField("root", this.TEXT_LENGTH);
         JLabel labelPassword = new JLabel("Password:");
         JTextField inputPassword = new JTextField("password", this.TEXT_LENGTH);

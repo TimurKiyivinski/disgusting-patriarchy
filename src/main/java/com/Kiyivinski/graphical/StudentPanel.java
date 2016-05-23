@@ -20,12 +20,13 @@ public class StudentPanel extends JPanel {
         JScrollPane panelLeft = new JScrollPane(studentPane);
         JPanel panelRight = new JPanel();
 
+        SpringLayout rightPane = new StudentForm(panelRight);
+        panelRight.setLayout(rightPane);
+
         List<Student> students = Student.all();
         for (Student s: students) {
             studentPane.addRow(s);
-            studentPane.addRow(s);
         }
-
 
         this.add(panelLeft);
         this.add(panelRight);
