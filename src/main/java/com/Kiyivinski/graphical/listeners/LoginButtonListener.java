@@ -50,7 +50,7 @@ public class LoginButtonListener implements ActionListener {
             String password = submit.getClientProperty("password").toString();
             try {
                 Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
-                this.observer.login();
+                this.observer.login(database, user, password);
             } catch (Exception exception) {
                 this.inputDatabase.setForeground(Color.RED);
                 this.inputUser.setForeground(Color.RED);

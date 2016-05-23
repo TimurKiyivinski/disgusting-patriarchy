@@ -1,5 +1,5 @@
 package com.Kiyivinski.graphical.listeners;
 
 public interface LoginInterface {
-    public void login();
+    void login(String database, String user, String password);
 }

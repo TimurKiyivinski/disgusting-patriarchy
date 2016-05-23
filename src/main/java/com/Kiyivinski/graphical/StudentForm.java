@@ -17,8 +17,8 @@ public class StudentForm extends SpringLayout {
         JButton submit;
         if (modifyStudent == null) {
             submit = new JButton("Create");
-            inputName  = new JTextField("", this.TEXT_LENGTH);
-            inputIdentification = new JTextField("", this.TEXT_LENGTH);
+            inputName  = new JTextField("asdasd", this.TEXT_LENGTH);
+            inputIdentification = new JTextField("asdasdasda", this.TEXT_LENGTH);
         } else {
             submit = new JButton("Modify");
             inputName  = new JTextField(modifyStudent.getName(), this.TEXT_LENGTH);

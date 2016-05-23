@@ -11,10 +11,12 @@ import javax.swing.event.ListSelectionListener;
 public class StudentTableRowListener implements ListSelectionListener {
     private StudentTable table;
     private JPanel updatePanel;
+    private StudentTableInterface observer;
 
-    public StudentTableRowListener(StudentTable table, JPanel updatePanel) {
+    public StudentTableRowListener(StudentTable table, JPanel updatePanel, StudentTableInterface observer) {
         this.table = table;
         this.updatePanel = updatePanel;
+        this.observer = observer;
     }
 
     /**
@@ -24,9 +26,8 @@ public class StudentTableRowListener implements ListSelectionListener {
      */
     public void valueChanged(ListSelectionEvent e) {
         if (! e.getValueIsAdjusting()) {
-            String identification = table.getValueAt(table.getSelectedRow(), 0).toString();
-            Student student = Student.whereIdentification(identification).get(0);
-            updatePanel.setLayout(new StudentForm(updatePanel, student));
+            String identification = table.getValueAt(table.getSelectedRow(), 1).toString();
+            observer.updateStudentForm(identification);
         }
     }
 }
