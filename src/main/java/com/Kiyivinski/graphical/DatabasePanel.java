@@ -1,17 +1,12 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.LoginButtonListener;
 import com.Kiyivinski.graphical.listeners.LoginInputListener;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class DatabasePanel extends JPanel {
     private final int TEXT_LENGTH = 48;
-
-    private String database;
-    private String user;
-    private String password;
 
     DatabasePanel() {
         SpringLayout layout = new SpringLayout();
@@ -22,7 +17,7 @@ public class DatabasePanel extends JPanel {
         final JLabel labelUser = new JLabel("Username:");
         JTextField inputUser = new JTextField("root", this.TEXT_LENGTH);
         JLabel labelPassword = new JLabel("Password:");
-        JPasswordField inputPassword = new JPasswordField("password", this.TEXT_LENGTH);
+        JTextField inputPassword = new JTextField("password", this.TEXT_LENGTH);
         JButton submit = new JButton("Connect");
 
         this.add(labelDatabase);
@@ -53,7 +48,7 @@ public class DatabasePanel extends JPanel {
 
         submit.putClientProperty("database", inputDatabase.getText());
         submit.putClientProperty("user", inputUser.getText());
-        submit.putClientProperty("password", inputPassword.getPassword());
+        submit.putClientProperty("password", inputPassword.getText());
 
         inputDatabase.getDocument().addDocumentListener(
                 new LoginInputListener("database", inputDatabase, submit)
@@ -65,10 +60,6 @@ public class DatabasePanel extends JPanel {
                 new LoginInputListener("password", inputPassword, submit)
         );
 
-        submit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(((JButton) e.getSource()).getClientProperty("database"));
-            }
-        });
+        submit.addActionListener(new LoginButtonListener(inputDatabase, inputUser, inputPassword));
     }
 }
