@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `assessments` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) UNIQUE NOT NULL,
   `mark` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
   `semester_id` int(11) NOT NULL
@@ -53,7 +53,7 @@ INSERT INTO `assessments` (`id`, `name`, `mark`, `type_id`, `semester_id`) VALUE
 
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) UNIQUE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -72,7 +72,7 @@ INSERT INTO `courses` (`id`, `name`) VALUES
 
 CREATE TABLE `semesters` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) UNIQUE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -92,7 +92,7 @@ INSERT INTO `semesters` (`id`, `name`) VALUES
 CREATE TABLE `students` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `identification` varchar(255) NOT NULL,
+  `identification` varchar(255) UNIQUE NOT NULL,
   `course_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -172,7 +172,7 @@ INSERT INTO `student_units` (`id`, `student_id`, `unit_id`, `semester_id`) VALUE
 
 CREATE TABLE `types` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) UNIQUE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -193,7 +193,7 @@ INSERT INTO `types` (`id`, `name`) VALUES
 CREATE TABLE `units` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `code` varchar(255) NOT NULL
+  `code` varchar(255) UNIQUE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -203,7 +203,7 @@ CREATE TABLE `units` (
 INSERT INTO `units` (`id`, `name`, `code`) VALUES
 (1, 'Introduction to Java', 'JAVA0001'),
 (2, 'Intermediate Java', 'JAVA0002'),
-(3, 'Java for Professionals', 'JAVA0002'),
+(3, 'Java for Professionals', 'JAVA0003'),
 (4, 'Porting Java to Rust', 'USEBRAIN0000'),
 (5, 'Professional Issues in Chemical Engineering', 'BOMB0001'),
 (6, 'Applied Theory of Dangerous Chemicals', 'DHMO0001'),
