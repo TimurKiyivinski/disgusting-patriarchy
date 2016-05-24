@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="disgusting-patriarchy:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/disgusting_patriarchy_jar</output-path>
+    <root id="archive" name="disgusting-patriarchy.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="disgusting-patriarchy" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/javalite/activejdbc/1.4.11/activejdbc-1.4.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/javalite/javalite-common/1.4.11/javalite-common-1.4.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/seaglasslookandfeel/seaglasslookandfeel/0.2/seaglasslookandfeel-0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mariadb/jdbc/mariadb-java-client/1.4.5/mariadb-java-client-1.4.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
