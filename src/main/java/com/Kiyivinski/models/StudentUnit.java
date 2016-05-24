@@ -24,6 +24,10 @@ public class StudentUnit extends Model implements StudentInterface, UnitInterfac
     }
 
     // region GETTER
+    public String getID() {
+        return this.get("id").toString();
+    }
+
     public String getStudentID() {
         return this.get("student_id").toString();
     }

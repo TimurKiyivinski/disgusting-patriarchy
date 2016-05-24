@@ -22,6 +22,10 @@ public class UnitAssessment extends Model implements UnitInterface, AssessmentIn
     }
 
     // region GETTER
+    public String getID() {
+        return this.get("id").toString();
+    }
+
     public String getUnitID() {
         return this.get("unit_id").toString();
     }

@@ -22,6 +22,10 @@ public class Student extends Model implements CourseInterface {
     }
 
     // region GETTER
+    public String getID() {
+        return this.get("id").toString();
+    }
+
     public String getName() {
         return this.get("name").toString();
     }

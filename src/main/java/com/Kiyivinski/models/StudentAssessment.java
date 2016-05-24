@@ -23,6 +23,10 @@ public class StudentAssessment extends Model implements StudentInterface, Assess
     }
 
     // region GETTER
+    public String getID() {
+        return this.get("id").toString();
+    }
+
     public String getGrade() {
         return this.get("grade").toString();
     }
