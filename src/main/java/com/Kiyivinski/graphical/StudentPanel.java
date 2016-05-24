@@ -1,5 +1,6 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.ConnectInterface;
 import com.Kiyivinski.graphical.listeners.StudentTableInterface;
 import com.Kiyivinski.models.Student;
 import org.javalite.activejdbc.Base;
@@ -9,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.List;
 
-public class StudentPanel extends JPanel implements StudentTableInterface {
+public class StudentPanel extends JPanel implements ConnectInterface, StudentTableInterface {
     private JScrollPane panelLeft;
     private JPanel panelRight;
     private String database;
@@ -22,26 +23,25 @@ public class StudentPanel extends JPanel implements StudentTableInterface {
         GridLayout layout = new GridLayout(1, 2, 25, 25);
         this.setLayout(layout);
 
-        StudentTable studentPane = new StudentTable(this);
-        studentPane.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        StudentTable studentTable = new StudentTable(this);
+        studentTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        this.panelLeft = new JScrollPane(studentPane);
+        this.panelLeft = new JScrollPane(studentTable);
         this.panelRight = new JPanel();
-        studentPane.setUpdatePanel(panelRight);
 
-        SpringLayout rightPane = new StudentForm(panelRight);
-        panelRight.setLayout(rightPane);
+        SpringLayout studentForm = new StudentForm(panelRight);
+        panelRight.setLayout(studentForm);
 
         List<Student> students = Student.all();
         for (Student s: students) {
-            studentPane.addRow(s);
+            studentTable.addRow(s);
         }
 
         this.add(panelLeft);
         this.add(panelRight);
     }
 
-    public void connect(String database, String user, String password) {
+    public void setConnect(String database, String user, String password) {
         this.database = database;
         this.user = user;
         this.password = password;
@@ -52,8 +52,13 @@ public class StudentPanel extends JPanel implements StudentTableInterface {
             Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
         }
         panelRight.removeAll();
-        Student student = Student.whereIdentification(identification).get(0);
-        SpringLayout rightPane = new StudentForm(panelRight, student);
+        SpringLayout rightPane;
+        if (identification == "000000") {
+            rightPane = new StudentForm(panelRight, null);
+        } else {
+            Student student = Student.whereIdentification(identification).get(0);
+            rightPane = new StudentForm(panelRight, student);
+        }
         panelRight.setLayout(rightPane);
     }
 }

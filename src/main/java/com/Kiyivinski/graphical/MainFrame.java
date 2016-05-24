@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements LoginInterface {
 
     private void createMainLayout() {
         StudentPanel studentPanel = new StudentPanel();
-        studentPanel.connect(this.database, this.user, this.password);
+        studentPanel.setConnect(this.database, this.user, this.password);
 
         JPanel assessmentPanel = new AssessmentPanel();
         JPanel unitPanel = new UnitPanel();

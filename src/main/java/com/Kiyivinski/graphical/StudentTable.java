@@ -9,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class StudentTable extends JTable {
     private DefaultTableModel model;
-    private JPanel updatePanel;
 
     StudentTable(StudentTableInterface observer) {
         this.model = new DefaultTableModel();
@@ -17,9 +16,14 @@ public class StudentTable extends JTable {
         this.model.addColumn("Student ID");
         this.model.addColumn("Course");
 
-        this.getSelectionModel().addListSelectionListener(new StudentTableRowListener(this, updatePanel, observer));
+        this.getSelectionModel().addListSelectionListener(new StudentTableRowListener(this, observer));
 
         this.setModel(this.model);
+
+        Object [] row = new Object[]{
+                "Create Student", "000000", ""
+        };
+        this.model.addRow(row);
     }
 
     public void addRow(Student student) {
@@ -29,9 +33,5 @@ public class StudentTable extends JTable {
                 student.getCourse().getName()
         };
         this.model.addRow(row);
-    }
-
-    public void setUpdatePanel(JPanel updatePanel) {
-        this.updatePanel = updatePanel;
     }
 }
