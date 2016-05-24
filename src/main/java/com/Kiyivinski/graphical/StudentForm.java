@@ -3,6 +3,7 @@ package com.Kiyivinski.graphical;
 import com.Kiyivinski.graphical.listeners.ComboBoxButtonListener;
 import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
 import com.Kiyivinski.graphical.listeners.StudentFormCreateListener;
+import com.Kiyivinski.graphical.listeners.StudentFormDeleteListener;
 import com.Kiyivinski.graphical.listeners.interfaces.StudentDatabaseInterface;
 import com.Kiyivinski.models.Student;
 
@@ -26,10 +27,21 @@ public class StudentForm extends SpringLayout {
             submit.putClientProperty("id", "0");
         } else {
             submit = new JButton("Modify");
+            JButton delete = new JButton("Delete");
+
             inputName  = new JTextField(modifyStudent.getName(), this.TEXT_LENGTH);
             inputIdentification = new JTextField(modifyStudent.getIdentification(), this.TEXT_LENGTH);
             inputCourse.setSelectedItem(modifyStudent.getCourse().getName());
+
             submit.putClientProperty("id", modifyStudent.getID());
+            delete.putClientProperty("id", modifyStudent.getID());
+
+            parent.add(delete);
+
+            this.putConstraint(SpringLayout.EAST, delete, 0, SpringLayout.WEST, submit);
+            this.putConstraint(SpringLayout.NORTH, delete, 28, SpringLayout.NORTH, inputCourse);
+
+            delete.addActionListener(new StudentFormDeleteListener(observer));
         }
 
         parent.add(labelName);

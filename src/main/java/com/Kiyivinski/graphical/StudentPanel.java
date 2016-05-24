@@ -57,6 +57,7 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
         for (Student s : students) {
             this.studentTable.addRow(s);
         }
+        this.studentTable.setRowSelectionInterval(0, 0);
     }
 
     public void setConnect(String database, String user, String password) {
@@ -103,6 +104,17 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
             modifyStudent.setName(name);
             modifyStudent.setIdentification(identification);
             modifyStudent.setCourse(course_id);
+            this.initializeLeftTable();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteStudent(String id) {
+        this.connect();
+        Student deleteStudent = Student.find(id);
+        try {
+            deleteStudent.delete();
             this.initializeLeftTable();
         } catch (Exception e) {
             System.out.println(e);
