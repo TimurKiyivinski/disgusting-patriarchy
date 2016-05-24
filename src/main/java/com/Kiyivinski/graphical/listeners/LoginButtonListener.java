@@ -1,5 +1,6 @@
 package com.Kiyivinski.graphical.listeners;
 
+import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
 import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
@@ -11,9 +12,9 @@ public class LoginButtonListener implements ActionListener {
     private JTextField inputDatabase;
     private JTextField inputUser;
     private JTextField inputPassword;
-    private LoginInterface observer;
+    private ConnectInterface observer;
 
-    public LoginButtonListener(JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, LoginInterface observer) {
+    public LoginButtonListener(JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, ConnectInterface observer) {
         this.inputDatabase = inputDatabase;
         this.inputUser= inputUser;
         this.inputPassword = inputPassword;
@@ -34,9 +35,9 @@ public class LoginButtonListener implements ActionListener {
         private JTextField inputDatabase;
         private JTextField inputUser;
         private JTextField inputPassword;
-        private LoginInterface observer;
+        private ConnectInterface observer;
 
-        login(JButton submit,JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, LoginInterface observer) {
+        login(JButton submit,JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, ConnectInterface observer) {
             this.submit = submit;
             this.inputDatabase = inputDatabase;
             this.inputUser= inputUser;
@@ -50,7 +51,7 @@ public class LoginButtonListener implements ActionListener {
             String password = submit.getClientProperty("password").toString();
             try {
                 Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
-                this.observer.login(database, user, password);
+                this.observer.setConnect(database, user, password);
             } catch (Exception exception) {
                 this.inputDatabase.setForeground(Color.RED);
                 this.inputUser.setForeground(Color.RED);

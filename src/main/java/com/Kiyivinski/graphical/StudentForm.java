@@ -1,5 +1,9 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.ComboBoxButtonListener;
+import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
+import com.Kiyivinski.graphical.listeners.StudentFormCreateListener;
+import com.Kiyivinski.graphical.listeners.interfaces.StudentDatabaseInterface;
 import com.Kiyivinski.models.Student;
 
 import javax.swing.*;
@@ -7,7 +11,7 @@ import javax.swing.*;
 public class StudentForm extends SpringLayout {
     private final int TEXT_LENGTH = 14;
 
-    public StudentForm(JPanel parent, Student modifyStudent) {
+    public StudentForm(JPanel parent, Student modifyStudent, StudentDatabaseInterface observer) {
         JLabel labelName = new JLabel("Name:");
         JTextField inputName;
         JLabel labelIdentification = new JLabel("Student ID:");
@@ -19,10 +23,13 @@ public class StudentForm extends SpringLayout {
             submit = new JButton("Create");
             inputName  = new JTextField("Student Name", this.TEXT_LENGTH);
             inputIdentification = new JTextField("000000", this.TEXT_LENGTH);
+            submit.putClientProperty("id", "0");
         } else {
             submit = new JButton("Modify");
             inputName  = new JTextField(modifyStudent.getName(), this.TEXT_LENGTH);
             inputIdentification = new JTextField(modifyStudent.getIdentification(), this.TEXT_LENGTH);
+            inputCourse.setSelectedItem(modifyStudent.getCourse().getName());
+            submit.putClientProperty("id", modifyStudent.getID());
         }
 
         parent.add(labelName);
@@ -50,9 +57,22 @@ public class StudentForm extends SpringLayout {
 
         this.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, inputCourse);
         this.putConstraint(SpringLayout.NORTH, submit, 28, SpringLayout.NORTH, inputCourse);
+
+        submit.putClientProperty("name", inputName.getText());
+        submit.putClientProperty("identification", inputIdentification.getText());
+        submit.putClientProperty("course", inputCourse.getSelectedItem().toString());
+
+        inputName.getDocument().addDocumentListener(
+                new InputFieldButtonListener("name", inputName, submit)
+        );
+        inputIdentification.getDocument().addDocumentListener(
+                new InputFieldButtonListener("identification", inputIdentification, submit)
+        );
+        inputCourse.addItemListener(new ComboBoxButtonListener("course", submit));
+        submit.addActionListener(new StudentFormCreateListener(observer));
     }
 
-    StudentForm(JPanel parent) {
-        this(parent, null);
+    StudentForm(JPanel parent, StudentDatabaseInterface observer) {
+        this(parent, null, observer);
     }
 }

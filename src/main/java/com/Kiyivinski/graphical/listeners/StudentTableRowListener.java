@@ -1,6 +1,7 @@
 package com.Kiyivinski.graphical.listeners;
 
 import com.Kiyivinski.graphical.StudentTable;
+import com.Kiyivinski.graphical.listeners.interfaces.StudentTableInterface;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -21,8 +22,8 @@ public class StudentTableRowListener implements ListSelectionListener {
      */
     public void valueChanged(ListSelectionEvent e) {
         if (! e.getValueIsAdjusting()) {
-            String identification = table.getValueAt(table.getSelectedRow(), 1).toString();
-            observer.updateStudentForm(identification);
+            String id = table.getValueAt(table.getSelectedRow(), 0).toString();
+            observer.updateStudentForm(id);
         }
     }
 }

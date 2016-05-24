@@ -1,6 +1,6 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.StudentTableInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.StudentTableInterface;
 import com.Kiyivinski.graphical.listeners.StudentTableRowListener;
 import com.Kiyivinski.models.Student;
 
@@ -12,6 +12,7 @@ public class StudentTable extends JTable {
 
     StudentTable(StudentTableInterface observer) {
         this.model = new DefaultTableModel();
+        this.model.addColumn("ID");
         this.model.addColumn("Name");
         this.model.addColumn("Student ID");
         this.model.addColumn("Course");
@@ -21,13 +22,14 @@ public class StudentTable extends JTable {
         this.setModel(this.model);
 
         Object [] row = new Object[]{
-                "Create Student", "000000", ""
+                "0", "Create Student", "000000", ""
         };
         this.model.addRow(row);
     }
 
     public void addRow(Student student) {
         Object [] row = new Object[]{
+                student.getID(),
                 student.getName(),
                 student.getIdentification(),
                 student.getCourse().getName()

@@ -1,10 +1,11 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.LoginInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
+import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
 
-public class MainFrame extends JFrame implements LoginInterface {
+public class MainFrame extends JFrame implements ConnectInterface {
     private JTabbedPane layout;
     private String database;
     private String user;
@@ -47,12 +48,18 @@ public class MainFrame extends JFrame implements LoginInterface {
         this.layout.addTab("Courses", coursePanel);
     }
 
-    public void login(String database, String user, String password) {
+    public void setConnect(String database, String user, String password) {
         this.database = database;
         this.user = user;
         this.password = password;
 
         this.layout.removeTabAt(0);
         this.createMainLayout();
+    }
+
+    public void connect() {
+        if (! Base.hasConnection()) {
+            Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
+        }
     }
 }

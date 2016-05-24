@@ -41,7 +41,7 @@ public class Course extends Model {
     }
 
     public static List<Course> whereName(String name) {
-        return Student.where("name = '" + name + "'");
+        return Course.where("name = '" + name + "'");
     }
     // endregion
 }

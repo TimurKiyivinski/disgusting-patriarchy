@@ -1,15 +1,15 @@
 package com.Kiyivinski.graphical;
 
 import com.Kiyivinski.graphical.listeners.LoginButtonListener;
-import com.Kiyivinski.graphical.listeners.LoginInputListener;
-import com.Kiyivinski.graphical.listeners.LoginInterface;
+import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
+import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
 
 import javax.swing.*;
 
 public class LoginForm extends SpringLayout {
     private final int TEXT_LENGTH = 48;
 
-    public LoginForm(JPanel parent, LoginInterface observer) {
+    public LoginForm(JPanel parent, ConnectInterface observer) {
         JLabel labelDatabase = new JLabel("Database Address:");
         JTextField inputDatabase = new JTextField("192.168.99.100:3306/java", this.TEXT_LENGTH);
         JLabel labelUser = new JLabel("Username:");
@@ -49,13 +49,13 @@ public class LoginForm extends SpringLayout {
         submit.putClientProperty("password", inputPassword.getText());
 
         inputDatabase.getDocument().addDocumentListener(
-                new LoginInputListener("database", inputDatabase, submit)
+                new InputFieldButtonListener("database", inputDatabase, submit)
         );
         inputUser.getDocument().addDocumentListener(
-                new LoginInputListener("user", inputUser, submit)
+                new InputFieldButtonListener("user", inputUser, submit)
         );
         inputPassword.getDocument().addDocumentListener(
-                new LoginInputListener("password", inputPassword, submit)
+                new InputFieldButtonListener("password", inputPassword, submit)
         );
 
         submit.addActionListener(new LoginButtonListener(inputDatabase, inputUser, inputPassword, observer));

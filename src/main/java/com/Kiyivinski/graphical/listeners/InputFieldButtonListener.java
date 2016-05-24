@@ -4,12 +4,12 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class LoginInputListener implements DocumentListener {
+public class InputFieldButtonListener implements DocumentListener {
     private String key;
     private JTextField field;
     private JButton update;
 
-    public LoginInputListener(String key, JTextField field, JButton update) {
+    public InputFieldButtonListener(String key, JTextField field, JButton update) {
         this.key = key;
         this.field = field;
         this.update = update;
