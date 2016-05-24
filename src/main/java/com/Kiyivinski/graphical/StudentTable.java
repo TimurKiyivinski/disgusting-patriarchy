@@ -20,7 +20,9 @@ public class StudentTable extends JTable {
         this.getSelectionModel().addListSelectionListener(new StudentTableRowListener(this, observer));
 
         this.setModel(this.model);
+    }
 
+    public void addCreate() {
         Object [] row = new Object[]{
                 "0", "Create Student", "000000", ""
         };

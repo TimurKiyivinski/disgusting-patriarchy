@@ -9,6 +9,7 @@ import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
     private String database;
     private String user;
     private String password;
+    private StudentTable studentTable;
 
     public StudentPanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -25,8 +27,8 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
         GridLayout layout = new GridLayout(1, 2, 25, 25);
         this.setLayout(layout);
 
-        StudentTable studentTable = new StudentTable(this);
-        studentTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        this.studentTable = new StudentTable(this);
+        this.studentTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         this.panelLeft = new JScrollPane(studentTable);
         this.panelRight = new JPanel();
@@ -34,13 +36,27 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
         SpringLayout studentForm = new StudentForm(panelRight, this);
         panelRight.setLayout(studentForm);
 
-        List<Student> students = Student.all();
-        for (Student s: students) {
-            studentTable.addRow(s);
-        }
+        this.initializeLeftTable();
 
         this.add(panelLeft);
         this.add(panelRight);
+    }
+
+    public void initializeLeftTable() {
+        this.connect();
+        DefaultTableModel model = (DefaultTableModel) this.studentTable.getModel();
+
+        try {
+            model.setRowCount(0);
+        } catch (Exception e) {
+            // Do not fail
+        }
+
+        this.studentTable.addCreate();
+        List<Student> students = Student.all();
+        for (Student s : students) {
+            this.studentTable.addRow(s);
+        }
     }
 
     public void setConnect(String database, String user, String password) {
@@ -71,15 +87,25 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
     public void createStudent(String name, String identification, String course) {
         this.connect();
         String course_id = Course.whereName(course).get(0).getID();
-        Student.create(name, identification, course_id);
+        try {
+            Student student = Student.create(name, identification, course_id);
+            studentTable.addRow(student);
+        } catch (Exception e) {
+            System.out.println("Fail");
+        }
     }
 
     public void modifyStudent(String id, String name, String identification, String course) {
         this.connect();
         String course_id = Course.whereName(course).get(0).getID();
         Student modifyStudent = Student.find(id);
-        modifyStudent.setName(name);
-        modifyStudent.setIdentification(identification);
-        modifyStudent.setCourse(course_id);
+        try {
+            modifyStudent.setName(name);
+            modifyStudent.setIdentification(identification);
+            modifyStudent.setCourse(course_id);
+            this.initializeLeftTable();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
