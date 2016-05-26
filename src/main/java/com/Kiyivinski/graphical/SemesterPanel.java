@@ -11,10 +11,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class SemesterPanel extends JPanel implements ConnectInterface, ModelTableInterface, UnitSemesterTableInterface, SemesterDatabaseInterface, UnitSemesterDatabaseInterface {
+public class SemesterPanel extends JPanel implements ConnectInterface, ModelTableInterface, SemesterDatabaseInterface, UnitSemesterDatabaseInterface {
     private JScrollPane panelLeft;
-    private JScrollPane panelLMiddle;
-    private JPanel panelRMiddle;
+    private JScrollPane panelMiddle;
     private JPanel panelRight;
     private String database;
     private String user;
@@ -25,26 +24,23 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
     public SemesterPanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        GridLayout layout = new GridLayout(1, 4, 25, 25);
+        GridLayout layout = new GridLayout(1, 3, 25, 25);
         this.setLayout(layout);
 
         this.semesterTable = new SemesterTable(this);
-
-        this.unitSemesterTable = new UnitSemesterTable(this);
+        this.unitSemesterTable = new UnitSemesterTable();
 
         this.panelLeft = new JScrollPane(semesterTable);
-        this.panelLMiddle = new JScrollPane(unitSemesterTable);
-        this.panelRMiddle = new JPanel();
+        this.panelMiddle = new JScrollPane(unitSemesterTable);
         this.panelRight = new JPanel();
 
-        SpringLayout semesterForm = new SemesterForm(panelRMiddle, this);
-        panelRMiddle.setLayout(semesterForm);
+        SpringLayout semesterForm = new SemesterForm(panelRight, this);
+        panelRight.setLayout(semesterForm);
 
         this.initializeLeftTable();
 
         this.add(panelLeft);
-        this.add(panelLMiddle);
-        this.add(panelRMiddle);
+        this.add(panelMiddle);
         this.add(panelRight);
     }
 
@@ -97,31 +93,17 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
 
     public void updateModelForm(String id) {
         this.connect();
-        panelRMiddle.removeAll();
+        panelRight.removeAll();
         SpringLayout rightPane;
         if (id.equals("0")) {
-            rightPane = new SemesterForm(panelRMiddle, this);
+            rightPane = new SemesterForm(panelRight, this);
         } else {
             Semester semester = Semester.find(id);
-            rightPane = new SemesterForm(panelRMiddle, semester, this);
+            rightPane = new SemesterForm(panelRight, semester, this);
             this.initializeMiddleTable(id);
         }
-        panelRMiddle.setLayout(rightPane);
-        panelRMiddle.revalidate();
-    }
-
-    public void updateUnitSemesterForm(String id) {
-        //this.connect();
-        //panelRight.removeAll();
-        //SpringLayout rightPane;
-        //if (id.equals("0")) {
-        //    rightPane = new UnitSemesterForm(panelRight, this);
-        //} else {
-        //    UnitSemester unitSemester = UnitSemester.find(id);
-        //    rightPane = new UnitSemesterForm(panelRight, unitSemester, this);
-        //}
-        //panelRight.setLayout(rightPane);
-        //panelRight.revalidate();
+        panelRight.setLayout(rightPane);
+        panelRight.revalidate();
     }
 
     public void createSemester(String name) {
