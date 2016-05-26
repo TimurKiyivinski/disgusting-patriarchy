@@ -6,9 +6,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Unit form delete listener.
+ */
 public class UnitFormDeleteListener implements ActionListener {
     private UnitDatabaseInterface observer;
 
+    /**
+     * Instantiates a new Unit form delete listener.
+     *
+     * @param observer the observer
+     */
     public UnitFormDeleteListener(UnitDatabaseInterface observer) {
         this.observer = observer;
     }

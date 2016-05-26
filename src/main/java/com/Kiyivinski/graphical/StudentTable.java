@@ -4,7 +4,15 @@ import com.Kiyivinski.graphical.listeners.ModelTableRowListener;
 import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.models.Student;
 
+/**
+ * The type Student table.
+ */
 public class StudentTable extends ModelTable {
+    /**
+     * Instantiates a new Student table.
+     *
+     * @param observer the observer
+     */
     public StudentTable(ModelTableInterface observer) {
         super.addColumn("id");
         super.addColumn("Name");
@@ -20,6 +28,11 @@ public class StudentTable extends ModelTable {
         super.addRow(row);
     }
 
+    /**
+     * Add row.
+     *
+     * @param student the student
+     */
     public void addRow(Student student) {
         Object [] row = new Object[]{
                 student.getID(),

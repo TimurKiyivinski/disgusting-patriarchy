@@ -6,9 +6,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Course form create listener.
+ */
 public class CourseFormCreateListener implements ActionListener {
     private CourseDatabaseInterface observer;
 
+    /**
+     * Instantiates a new Course form create listener.
+     *
+     * @param observer the observer
+     */
     public CourseFormCreateListener(CourseDatabaseInterface observer) {
         this.observer = observer;
     }

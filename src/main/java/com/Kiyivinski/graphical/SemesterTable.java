@@ -4,7 +4,15 @@ import com.Kiyivinski.graphical.listeners.ModelTableRowListener;
 import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.models.Semester;
 
+/**
+ * The type Semester table.
+ */
 public class SemesterTable extends ModelTable {
+    /**
+     * Instantiates a new Semester table.
+     *
+     * @param observer the observer
+     */
     public SemesterTable(ModelTableInterface observer) {
         super.addColumn("id");
         super.addColumn("Name");
@@ -18,6 +26,11 @@ public class SemesterTable extends ModelTable {
         super.addRow(row);
     }
 
+    /**
+     * Add row.
+     *
+     * @param semester the semester
+     */
     public void addRow(Semester semester) {
         Object [] row = new Object[]{
                 semester.getID(),

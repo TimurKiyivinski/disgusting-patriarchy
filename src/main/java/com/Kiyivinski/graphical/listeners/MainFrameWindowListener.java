@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+/**
+ * The type Main frame window listener.
+ */
 public class MainFrameWindowListener implements WindowListener {
 
     /**

@@ -6,10 +6,19 @@ import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
 
 import javax.swing.*;
 
+/**
+ * The type Login form.
+ */
 public class LoginForm extends SpringLayout {
     private final int TEXT_LENGTH = 48;
 
-    public LoginForm(JPanel parent, ConnectInterface observer) {
+        /**
+         * Instantiates a new Login form.
+         *
+         * @param parent   the parent
+         * @param observer the observer
+         */
+        public LoginForm(JPanel parent, ConnectInterface observer) {
         JLabel labelDatabase = new JLabel("Database Address:");
         JTextField inputDatabase = new JTextField("192.168.99.100:3306/java", this.TEXT_LENGTH);
         JLabel labelUser = new JLabel("Username:");

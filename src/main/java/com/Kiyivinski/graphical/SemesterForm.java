@@ -8,9 +8,20 @@ import com.Kiyivinski.models.Unit;
 
 import javax.swing.*;
 
+/**
+ * The type Semester form.
+ */
 public class SemesterForm extends SpringLayout {
     private final int TEXT_LENGTH = 10;
 
+    /**
+     * Instantiates a new Semester form.
+     *
+     * @param parent         the parent
+     * @param modifySemester the modify semester
+     * @param observer       the observer
+     * @param unitObserver   the unit observer
+     */
     public SemesterForm(JPanel parent, Semester modifySemester, SemesterDatabaseInterface observer, UnitSemesterDatabaseInterface unitObserver) {
         JLabel labelName = new JLabel("Name:");
         JTextField inputName;
@@ -84,6 +95,13 @@ public class SemesterForm extends SpringLayout {
         submit.addActionListener(new SemesterFormCreateListener(observer));
     }
 
+    /**
+     * Instantiates a new Semester form.
+     *
+     * @param parent       the parent
+     * @param observer     the observer
+     * @param unitObserver the unit observer
+     */
     public SemesterForm(JPanel parent, SemesterDatabaseInterface observer, UnitSemesterDatabaseInterface unitObserver) {
         this(parent, null, observer, unitObserver);
     }

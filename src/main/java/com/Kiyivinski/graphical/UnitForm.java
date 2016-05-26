@@ -8,9 +8,19 @@ import com.Kiyivinski.models.Unit;
 
 import javax.swing.*;
 
+/**
+ * The type Unit form.
+ */
 public class UnitForm extends SpringLayout {
     private final int TEXT_LENGTH = 14;
 
+    /**
+     * Instantiates a new Unit form.
+     *
+     * @param parent     the parent
+     * @param modifyUnit the modify unit
+     * @param observer   the observer
+     */
     public UnitForm(JPanel parent, Unit modifyUnit, UnitDatabaseInterface observer) {
         JLabel labelName = new JLabel("Name:");
         JTextField inputName;
@@ -71,6 +81,12 @@ public class UnitForm extends SpringLayout {
         submit.addActionListener(new UnitFormCreateListener(observer));
     }
 
+    /**
+     * Instantiates a new Unit form.
+     *
+     * @param parent   the parent
+     * @param observer the observer
+     */
     public UnitForm(JPanel parent, UnitDatabaseInterface observer) {
         this(parent, null, observer);
     }

@@ -9,9 +9,19 @@ import com.Kiyivinski.models.Student;
 
 import javax.swing.*;
 
+/**
+ * The type Student form.
+ */
 public class StudentForm extends SpringLayout {
     private final int TEXT_LENGTH = 14;
 
+    /**
+     * Instantiates a new Student form.
+     *
+     * @param parent        the parent
+     * @param modifyStudent the modify student
+     * @param observer      the observer
+     */
     public StudentForm(JPanel parent, Student modifyStudent, StudentDatabaseInterface observer) {
         JLabel labelName = new JLabel("Name:");
         JTextField inputName;
@@ -84,6 +94,12 @@ public class StudentForm extends SpringLayout {
         submit.addActionListener(new StudentFormCreateListener(observer));
     }
 
+    /**
+     * Instantiates a new Student form.
+     *
+     * @param parent   the parent
+     * @param observer the observer
+     */
     StudentForm(JPanel parent, StudentDatabaseInterface observer) {
         this(parent, null, observer);
     }

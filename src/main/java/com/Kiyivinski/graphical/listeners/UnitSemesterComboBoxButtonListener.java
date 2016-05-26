@@ -6,10 +6,19 @@ import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+/**
+ * The type Unit semester combo box button listener.
+ */
 public class UnitSemesterComboBoxButtonListener implements ItemListener {
     private String key;
     private JButton update;
 
+    /**
+     * Instantiates a new Unit semester combo box button listener.
+     *
+     * @param key    the key
+     * @param update the update
+     */
     public UnitSemesterComboBoxButtonListener(String key, JButton update) {
         this.key = key;
         this.update = update;

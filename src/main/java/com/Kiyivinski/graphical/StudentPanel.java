@@ -13,6 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * The type Student panel.
+ */
 public class StudentPanel extends JPanel implements ConnectInterface, ModelTableInterface, StudentDatabaseInterface {
     private JScrollPane panelLeft;
     private JPanel panelRight;
@@ -21,6 +24,9 @@ public class StudentPanel extends JPanel implements ConnectInterface, ModelTable
     private String password;
     private StudentTable studentTable;
 
+    /**
+     * Instantiates a new Student panel.
+     */
     public StudentPanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -41,6 +47,9 @@ public class StudentPanel extends JPanel implements ConnectInterface, ModelTable
         this.add(panelRight);
     }
 
+    /**
+     * Initialize left table.
+     */
     public void initializeLeftTable() {
         this.connect();
         DefaultTableModel model = (DefaultTableModel) this.studentTable.getModel();

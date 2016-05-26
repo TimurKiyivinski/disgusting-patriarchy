@@ -7,9 +7,19 @@ import com.Kiyivinski.models.Course;
 
 import javax.swing.*;
 
+/**
+ * The type Course form.
+ */
 public class CourseForm extends SpringLayout {
     private final int TEXT_LENGTH = 14;
 
+    /**
+     * Instantiates a new Course form.
+     *
+     * @param parent       the parent
+     * @param modifyCourse the modify course
+     * @param observer     the observer
+     */
     public CourseForm(JPanel parent, Course modifyCourse, CourseDatabaseInterface observer) {
         JLabel labelName = new JLabel("Name:");
         JTextField inputName;
@@ -46,6 +56,12 @@ public class CourseForm extends SpringLayout {
         submit.addActionListener(new CourseFormCreateListener(observer));
     }
 
+    /**
+     * Instantiates a new Course form.
+     *
+     * @param parent   the parent
+     * @param observer the observer
+     */
     public CourseForm(JPanel parent, CourseDatabaseInterface observer) {
         this(parent, null, observer);
     }

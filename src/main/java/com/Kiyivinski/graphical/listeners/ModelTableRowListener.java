@@ -6,10 +6,19 @@ import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * The type Model table row listener.
+ */
 public class ModelTableRowListener implements ListSelectionListener {
     private ModelTable table;
     private ModelTableInterface observer;
 
+    /**
+     * Instantiates a new Model table row listener.
+     *
+     * @param table    the table
+     * @param observer the observer
+     */
     public ModelTableRowListener(ModelTable table, ModelTableInterface observer) {
         this.table = table;
         this.observer = observer;

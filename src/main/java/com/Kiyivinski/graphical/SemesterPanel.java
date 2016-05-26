@@ -11,6 +11,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * The type Semester panel.
+ */
 public class SemesterPanel extends JPanel implements ConnectInterface, ModelTableInterface, SemesterDatabaseInterface, UnitSemesterDatabaseInterface {
     private JScrollPane panelLeft;
     private JScrollPane panelMiddle;
@@ -21,6 +24,9 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
     private SemesterTable semesterTable;
     private UnitSemesterTable unitSemesterTable;
 
+    /**
+     * Instantiates a new Semester panel.
+     */
     public SemesterPanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -44,6 +50,9 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         this.add(panelRight);
     }
 
+    /**
+     * Initialize left table.
+     */
     public void initializeLeftTable() {
         this.connect();
         DefaultTableModel model = (DefaultTableModel) this.semesterTable.getModel();
@@ -62,6 +71,11 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         this.semesterTable.setRowSelectionInterval(0, 0);
     }
 
+    /**
+     * Initialize middle table.
+     *
+     * @param semester_id the semester id
+     */
     public void initializeMiddleTable(String semester_id) {
         this.connect();
         DefaultTableModel model = (DefaultTableModel) this.unitSemesterTable.getModel();

@@ -12,6 +12,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * The type Unit panel.
+ */
 public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInterface, UnitDatabaseInterface {
     private JScrollPane panelLeft;
     private JPanel panelRight;
@@ -20,6 +23,9 @@ public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInt
     private String password;
     private UnitTable unitTable;
 
+    /**
+     * Instantiates a new Unit panel.
+     */
     public UnitPanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -40,6 +46,9 @@ public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInt
         this.add(panelRight);
     }
 
+    /**
+     * Initialize left table.
+     */
     public void initializeLeftTable() {
         this.connect();
         DefaultTableModel model = (DefaultTableModel) this.unitTable.getModel();

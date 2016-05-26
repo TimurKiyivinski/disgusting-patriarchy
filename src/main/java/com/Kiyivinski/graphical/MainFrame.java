@@ -5,12 +5,18 @@ import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
 
+/**
+ * The type Main frame.
+ */
 public class MainFrame extends JFrame implements ConnectInterface {
     private JTabbedPane layout;
     private String database;
     private String user;
     private String password;
 
+    /**
+     * Instantiates a new Main frame.
+     */
     public MainFrame() {
         this.setTitle("Java Assignment 2 - 4316886 Timothy Kiyui");
         this.setSize(1024, 800);

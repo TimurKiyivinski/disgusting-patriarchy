@@ -6,9 +6,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Unit semester form delete listener.
+ */
 public class UnitSemesterFormDeleteListener implements ActionListener {
     private UnitSemesterDatabaseInterface observer;
 
+    /**
+     * Instantiates a new Unit semester form delete listener.
+     *
+     * @param observer the observer
+     */
     public UnitSemesterFormDeleteListener(UnitSemesterDatabaseInterface observer) {
         this.observer = observer;
     }

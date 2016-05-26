@@ -12,6 +12,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * The type Course panel.
+ */
 public class CoursePanel extends JPanel implements ConnectInterface, ModelTableInterface, CourseDatabaseInterface {
     private JScrollPane panelLeft;
     private JPanel panelRight;
@@ -20,6 +23,9 @@ public class CoursePanel extends JPanel implements ConnectInterface, ModelTableI
     private String password;
     private CourseTable courseTable;
 
+    /**
+     * Instantiates a new Course panel.
+     */
     public CoursePanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -40,6 +46,9 @@ public class CoursePanel extends JPanel implements ConnectInterface, ModelTableI
         this.add(panelRight);
     }
 
+    /**
+     * Initialize left table.
+     */
     public void initializeLeftTable() {
         this.connect();
         DefaultTableModel model = (DefaultTableModel) this.courseTable.getModel();
@@ -105,6 +114,11 @@ public class CoursePanel extends JPanel implements ConnectInterface, ModelTableI
         }
     }
 
+    /**
+     * Delete course.
+     *
+     * @param id the id
+     */
     public void deleteCourse(String id) {
         this.connect();
         Course deleteCourse = Course.find(id);

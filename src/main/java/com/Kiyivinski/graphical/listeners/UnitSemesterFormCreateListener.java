@@ -7,9 +7,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Unit semester form create listener.
+ */
 public class UnitSemesterFormCreateListener implements ActionListener {
     private UnitSemesterDatabaseInterface observer;
 
+    /**
+     * Instantiates a new Unit semester form create listener.
+     *
+     * @param observer the observer
+     */
     public UnitSemesterFormCreateListener(UnitSemesterDatabaseInterface observer) {
         this.observer = observer;
     }

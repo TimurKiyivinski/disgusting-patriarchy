@@ -2,7 +2,13 @@ package com.Kiyivinski.graphical;
 
 import com.Kiyivinski.models.UnitSemester;
 
+/**
+ * The type Unit semester table.
+ */
 public class UnitSemesterTable extends ModelTable {
+    /**
+     * Instantiates a new Unit semester table.
+     */
     public UnitSemesterTable() {
         super.addColumn("id");
         super.addColumn("Name");
@@ -12,6 +18,11 @@ public class UnitSemesterTable extends ModelTable {
         //
     }
 
+    /**
+     * Add row.
+     *
+     * @param unit the unit
+     */
     public void addRow(UnitSemester unit) {
         Object [] row = new Object[]{
                 unit.getUnitID(),

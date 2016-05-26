@@ -8,12 +8,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Login button listener.
+ */
 public class LoginButtonListener implements ActionListener {
     private JTextField inputDatabase;
     private JTextField inputUser;
     private JTextField inputPassword;
     private ConnectInterface observer;
 
+    /**
+     * Instantiates a new Login button listener.
+     *
+     * @param inputDatabase the input database
+     * @param inputUser     the input user
+     * @param inputPassword the input password
+     * @param observer      the observer
+     */
     public LoginButtonListener(JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, ConnectInterface observer) {
         this.inputDatabase = inputDatabase;
         this.inputUser= inputUser;
@@ -37,6 +48,15 @@ public class LoginButtonListener implements ActionListener {
         private JTextField inputPassword;
         private ConnectInterface observer;
 
+        /**
+         * Instantiates a new Login.
+         *
+         * @param submit        the submit
+         * @param inputDatabase the input database
+         * @param inputUser     the input user
+         * @param inputPassword the input password
+         * @param observer      the observer
+         */
         login(JButton submit,JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, ConnectInterface observer) {
             this.submit = submit;
             this.inputDatabase = inputDatabase;
