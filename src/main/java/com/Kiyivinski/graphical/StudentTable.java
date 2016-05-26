@@ -4,29 +4,20 @@ import com.Kiyivinski.graphical.listeners.interfaces.StudentTableInterface;
 import com.Kiyivinski.graphical.listeners.StudentTableRowListener;
 import com.Kiyivinski.models.Student;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
-public class StudentTable extends JTable {
-    private DefaultTableModel model;
-
-    StudentTable(StudentTableInterface observer) {
-        this.model = new DefaultTableModel();
-        this.model.addColumn("ID");
-        this.model.addColumn("Name");
-        this.model.addColumn("Student ID");
-        this.model.addColumn("Course");
-
+public class StudentTable extends ModelTable {
+    public StudentTable(StudentTableInterface observer) {
+        super.addColumn("id");
+        super.addColumn("Name");
+        super.addColumn("Identification");
+        super.addColumn("Course");
         this.getSelectionModel().addListSelectionListener(new StudentTableRowListener(this, observer));
-
-        this.setModel(this.model);
     }
 
     public void addCreate() {
         Object [] row = new Object[]{
                 "0", "Create Student", "000000", ""
         };
-        this.model.addRow(row);
+        super.addRow(row);
     }
 
     public void addRow(Student student) {
@@ -36,6 +27,6 @@ public class StudentTable extends JTable {
                 student.getIdentification(),
                 student.getCourse().getName()
         };
-        this.model.addRow(row);
+        super.addRow(row);
     }
 }
