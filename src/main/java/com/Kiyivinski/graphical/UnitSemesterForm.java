@@ -10,8 +10,6 @@ import com.Kiyivinski.models.UnitSemester;
 import javax.swing.*;
 
 public class UnitSemesterForm extends SpringLayout {
-    private final int TEXT_LENGTH = 14;
-
     public UnitSemesterForm(JPanel parent, UnitSemester modifyUnitSemester, UnitSemesterDatabaseInterface observer) {
         JLabel labelUnit = new JLabel("Unit:");
         JComboBox inputUnit = new UnitComboBox();

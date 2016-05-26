@@ -81,7 +81,6 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         for (UnitSemester s : unitSemesters) {
             this.unitSemesterTable.addRow(s);
         }
-        this.unitSemesterTable.setRowSelectionInterval(0, 0);
     }
 
     public void setConnect(String database, String user, String password) {
@@ -112,18 +111,17 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
     }
 
     public void updateUnitSemesterForm(String id) {
-        this.connect();
-        panelRight.removeAll();
-        SpringLayout rightPane;
-        if (id.equals("0")) {
-            rightPane = new UnitSemesterForm(panelRight, this);
-        } else {
-            UnitSemester unitSemester = UnitSemester.find(id);
-            rightPane = new UnitSemesterForm(panelRight, unitSemester, this);
-        }
-        panelRight.setLayout(rightPane);
-        panelRight.revalidate();
-        panelRight.revalidate();
+        //this.connect();
+        //panelRight.removeAll();
+        //SpringLayout rightPane;
+        //if (id.equals("0")) {
+        //    rightPane = new UnitSemesterForm(panelRight, this);
+        //} else {
+        //    UnitSemester unitSemester = UnitSemester.find(id);
+        //    rightPane = new UnitSemesterForm(panelRight, unitSemester, this);
+        //}
+        //panelRight.setLayout(rightPane);
+        //panelRight.revalidate();
     }
 
     public void createSemester(String name) {

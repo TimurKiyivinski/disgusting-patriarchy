@@ -20,7 +20,7 @@ public class UnitSemesterTable extends ModelTable {
 
     public void addRow(UnitSemester unit) {
         Object [] row = new Object[]{
-                unit.getID(),
+                unit.getUnitID(),
                 unit.getUnit().getName(),
         };
         super.addRow(row);

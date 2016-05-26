@@ -23,8 +23,9 @@ public class UnitSemesterTableRowListener implements ListSelectionListener {
      */
     public void valueChanged(ListSelectionEvent e) {
         if (! e.getValueIsAdjusting()) {
-            String id = table.getValueAt(table.getSelectedRow(), 0).toString();
-            observer.updateUnitSemesterForm(id);
+            String id = table.getValueAt(table.getSelectedRow(), 1).toString();
+            System.out.println(id);
+            //observer.updateUnitSemesterForm(id);
         }
     }
 }
