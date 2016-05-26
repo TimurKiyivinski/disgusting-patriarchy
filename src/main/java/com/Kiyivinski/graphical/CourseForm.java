@@ -2,7 +2,6 @@ package com.Kiyivinski.graphical;
 
 import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
 import com.Kiyivinski.graphical.listeners.CourseFormCreateListener;
-import com.Kiyivinski.graphical.listeners.CourseFormDeleteListener;
 import com.Kiyivinski.graphical.listeners.interfaces.CourseDatabaseInterface;
 import com.Kiyivinski.models.Course;
 
@@ -21,19 +20,10 @@ public class CourseForm extends SpringLayout {
             submit.putClientProperty("id", "0");
         } else {
             submit = new JButton("Modify");
-            JButton delete = new JButton("Delete");
 
             inputName = new JTextField(modifyCourse.getName(), this.TEXT_LENGTH);
 
             submit.putClientProperty("id", modifyCourse.getID());
-            delete.putClientProperty("id", modifyCourse.getID());
-
-            parent.add(delete);
-
-            this.putConstraint(SpringLayout.EAST, delete, 0, SpringLayout.WEST, submit);
-            this.putConstraint(SpringLayout.NORTH, delete, 28, SpringLayout.NORTH, inputName);
-
-            delete.addActionListener(new CourseFormDeleteListener(observer));
         }
 
         parent.add(labelName);

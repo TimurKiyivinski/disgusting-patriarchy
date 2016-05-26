@@ -28,7 +28,6 @@ public class StudentPanel extends JPanel implements ConnectInterface, ModelTable
         this.setLayout(layout);
 
         this.studentTable = new StudentTable(this);
-        this.studentTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         this.panelLeft = new JScrollPane(studentTable);
         this.panelRight = new JPanel();

@@ -4,6 +4,7 @@ import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
 import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.graphical.listeners.interfaces.SemesterDatabaseInterface;
 import com.Kiyivinski.models.Semester;
+import com.Kiyivinski.models.UnitSemester;
 import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
@@ -14,22 +15,26 @@ import java.util.List;
 
 public class SemesterPanel extends JPanel implements ConnectInterface, ModelTableInterface, SemesterDatabaseInterface {
     private JScrollPane panelLeft;
+    private JScrollPane panelMiddle;
     private JPanel panelRight;
     private String database;
     private String user;
     private String password;
     private SemesterTable semesterTable;
+    private UnitSemesterTable unitSemesterTable;
 
     public SemesterPanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        GridLayout layout = new GridLayout(1, 2, 25, 25);
+        GridLayout layout = new GridLayout(1, 3, 25, 25);
         this.setLayout(layout);
 
         this.semesterTable = new SemesterTable(this);
-        this.semesterTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        this.unitSemesterTable = new UnitSemesterTable();
 
         this.panelLeft = new JScrollPane(semesterTable);
+        this.panelMiddle = new JScrollPane(unitSemesterTable);
         this.panelRight = new JPanel();
 
         SpringLayout semesterForm = new SemesterForm(panelRight, this);
@@ -38,6 +43,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         this.initializeLeftTable();
 
         this.add(panelLeft);
+        this.add(panelMiddle);
         this.add(panelRight);
     }
 
@@ -57,6 +63,24 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
             this.semesterTable.addRow(s);
         }
         this.semesterTable.setRowSelectionInterval(0, 0);
+    }
+
+    public void initializeMiddleTable(String semester_id) {
+        this.connect();
+        DefaultTableModel model = (DefaultTableModel) this.unitSemesterTable.getModel();
+
+        try {
+            model.setRowCount(0);
+        } catch (Exception e) {
+            // Do not fail
+        }
+
+        this.unitSemesterTable.addCreate();
+        List<UnitSemester> unitSemesters = UnitSemester.whereSemester(semester_id);
+        for (UnitSemester s : unitSemesters) {
+            this.unitSemesterTable.addRow(s);
+        }
+        this.unitSemesterTable.setRowSelectionInterval(0, 0);
     }
 
     public void setConnect(String database, String user, String password) {
@@ -80,6 +104,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         } else {
             Semester semester = Semester.find(id);
             rightPane = new SemesterForm(panelRight, semester, this);
+            this.initializeMiddleTable(id);
         }
         panelRight.setLayout(rightPane);
         panelRight.revalidate();

@@ -27,7 +27,6 @@ public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInt
         this.setLayout(layout);
 
         this.unitTable = new UnitTable(this);
-        this.unitTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         this.panelLeft = new JScrollPane(unitTable);
         this.panelRight = new JPanel();

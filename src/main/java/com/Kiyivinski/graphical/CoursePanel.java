@@ -27,7 +27,6 @@ public class CoursePanel extends JPanel implements ConnectInterface, ModelTableI
         this.setLayout(layout);
 
         this.courseTable = new CourseTable(this);
-        this.courseTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         this.panelLeft = new JScrollPane(courseTable);
         this.panelRight = new JPanel();

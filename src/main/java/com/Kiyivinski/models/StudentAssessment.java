@@ -68,11 +68,11 @@ public class StudentAssessment extends Model implements StudentInterface, Assess
         return studentAssessments.get(0);
     }
 
-    public List<UnitAssessment> whereStudent(String student_id) {
+    public List<UnitSemester> whereStudent(String student_id) {
         return StudentAssessment.where("student_id = '" + student_id + "'");
     }
 
-    public List<UnitAssessment> whereAssessment(String assessment_id) {
+    public List<UnitSemester> whereAssessment(String assessment_id) {
         return StudentAssessment.where("assessment_id = '" + assessment_id + "'");
     }
 
