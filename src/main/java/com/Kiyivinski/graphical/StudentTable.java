@@ -1,11 +1,11 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.interfaces.StudentTableInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.graphical.listeners.StudentTableRowListener;
 import com.Kiyivinski.models.Student;
 
 public class StudentTable extends ModelTable {
-    public StudentTable(StudentTableInterface observer) {
+    public StudentTable(ModelTableInterface observer) {
         super.addColumn("id");
         super.addColumn("Name");
         super.addColumn("Identification");

@@ -1,7 +1,7 @@
 package com.Kiyivinski.graphical;
 
 import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
-import com.Kiyivinski.graphical.listeners.interfaces.StudentTableInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.graphical.listeners.interfaces.StudentDatabaseInterface;
 import com.Kiyivinski.models.Course;
 import com.Kiyivinski.models.Student;
@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class StudentPanel extends JPanel implements ConnectInterface, StudentTableInterface, StudentDatabaseInterface {
+public class StudentPanel extends JPanel implements ConnectInterface, ModelTableInterface, StudentDatabaseInterface {
     private JScrollPane panelLeft;
     private JPanel panelRight;
     private String database;
@@ -72,7 +72,7 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
         }
     }
 
-    public void updateStudentForm(String id) {
+    public void updateModelForm(String id) {
         this.connect();
         panelRight.removeAll();
         SpringLayout rightPane;
@@ -83,6 +83,7 @@ public class StudentPanel extends JPanel implements ConnectInterface, StudentTab
             rightPane = new StudentForm(panelRight, student, this);
         }
         panelRight.setLayout(rightPane);
+        panelRight.revalidate();
     }
 
     public void createStudent(String name, String identification, String course) {

@@ -1,16 +1,15 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.UnitTableRowListener;
+import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.models.Unit;
 
-import javax.swing.table.DefaultTableModel;
-
 public class UnitTable extends ModelTable {
-    private DefaultTableModel model;
-
-    public UnitTable() {
+    public UnitTable(ModelTableInterface observer) {
         super.addColumn("id");
         super.addColumn("Name");
         super.addColumn("Code");
+        this.getSelectionModel().addListSelectionListener(new UnitTableRowListener(this, observer));
     }
 
     public void addCreate() {
