@@ -1,12 +1,14 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.UnitSemesterTableRowListener;
+import com.Kiyivinski.graphical.listeners.interfaces.UnitSemesterTableInterface;
 import com.Kiyivinski.models.UnitSemester;
 
 public class UnitSemesterTable extends ModelTable {
-    public UnitSemesterTable() {
+    public UnitSemesterTable(UnitSemesterTableInterface observer) {
         super.addColumn("id");
         super.addColumn("Name");
-        //this.getSelectionModel().addListSelectionListener(new ModelTableRowListener(this, observer));
+        this.getSelectionModel().addListSelectionListener(new UnitSemesterTableRowListener(this, observer));
     }
 
     public void addCreate() {

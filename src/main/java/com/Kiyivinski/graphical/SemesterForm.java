@@ -9,7 +9,7 @@ import com.Kiyivinski.models.Semester;
 import javax.swing.*;
 
 public class SemesterForm extends SpringLayout {
-    private final int TEXT_LENGTH = 14;
+    private final int TEXT_LENGTH = 10;
 
     public SemesterForm(JPanel parent, Semester modifySemester, SemesterDatabaseInterface observer) {
         JLabel labelName = new JLabel("Name:");
