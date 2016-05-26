@@ -19,6 +19,10 @@ public class Unit extends Model {
         return Unit.findAll();
     }
 
+    public String toString() {
+        return this.getName();
+    }
+
     // region GETTER
     public String getID() {
         return this.get("id").toString();

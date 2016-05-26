@@ -1,18 +1,17 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.ComboBoxButtonListener;
-import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
-import com.Kiyivinski.graphical.listeners.SemesterFormCreateListener;
-import com.Kiyivinski.graphical.listeners.SemesterFormDeleteListener;
+import com.Kiyivinski.graphical.listeners.*;
 import com.Kiyivinski.graphical.listeners.interfaces.SemesterDatabaseInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.UnitSemesterDatabaseInterface;
 import com.Kiyivinski.models.Semester;
+import com.Kiyivinski.models.Unit;
 
 import javax.swing.*;
 
 public class SemesterForm extends SpringLayout {
     private final int TEXT_LENGTH = 10;
 
-    public SemesterForm(JPanel parent, Semester modifySemester, SemesterDatabaseInterface observer) {
+    public SemesterForm(JPanel parent, Semester modifySemester, SemesterDatabaseInterface observer, UnitSemesterDatabaseInterface unitObserver) {
         JLabel labelName = new JLabel("Name:");
         JTextField inputName;
         JButton submit;
@@ -33,6 +32,12 @@ public class SemesterForm extends SpringLayout {
 
             submit.putClientProperty("id", modifySemester.getID());
             delete.putClientProperty("id", modifySemester.getID());
+            addUnit.putClientProperty("semester_id", modifySemester.getID());
+            deleteUnit.putClientProperty("semester_id", modifySemester.getID());
+
+            Unit u = (Unit) inputUnit.getSelectedItem();
+            addUnit.putClientProperty("unit_id", u.getID());
+            deleteUnit.putClientProperty("unit_id", u.getID());
 
             parent.add(delete);
             parent.add(inputUnit);
@@ -52,9 +57,11 @@ public class SemesterForm extends SpringLayout {
             this.putConstraint(SpringLayout.NORTH, deleteUnit, 28, SpringLayout.NORTH, inputUnit);
 
             delete.addActionListener(new SemesterFormDeleteListener(observer));
+            addUnit.addActionListener(new UnitSemesterFormCreateListener(unitObserver));
+            deleteUnit.addActionListener(new UnitSemesterFormDeleteListener(unitObserver));
 
-            inputUnit.addItemListener(new ComboBoxButtonListener("unit_id", addUnit));
-            inputUnit.addItemListener(new ComboBoxButtonListener("unit_id", deleteUnit));
+            inputUnit.addItemListener(new UnitSemesterComboBoxButtonListener("unit_id", addUnit));
+            inputUnit.addItemListener(new UnitSemesterComboBoxButtonListener("unit_id", deleteUnit));
         }
 
         parent.add(labelName);
@@ -77,7 +84,7 @@ public class SemesterForm extends SpringLayout {
         submit.addActionListener(new SemesterFormCreateListener(observer));
     }
 
-    public SemesterForm(JPanel parent, SemesterDatabaseInterface observer) {
-        this(parent, null, observer);
+    public SemesterForm(JPanel parent, SemesterDatabaseInterface observer, UnitSemesterDatabaseInterface unitObserver) {
+        this(parent, null, observer, unitObserver);
     }
 }

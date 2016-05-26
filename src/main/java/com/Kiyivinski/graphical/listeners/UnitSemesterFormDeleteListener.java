@@ -20,8 +20,8 @@ public class UnitSemesterFormDeleteListener implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         JButton delete = (JButton) e.getSource();
-        delete.setVisible(false);
-        String id = delete.getClientProperty("id").toString();
-        observer.deleteUnitSemester(id);
+        String unit_id = delete.getClientProperty("unit_id").toString();
+        String semester_id = delete.getClientProperty("semester_id").toString();
+        observer.deleteUnitSemester(unit_id, semester_id);
     }
 }

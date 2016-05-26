@@ -1,14 +1,16 @@
 package com.Kiyivinski.graphical.listeners;
 
+import com.Kiyivinski.models.Unit;
+
 import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class ComboBoxButtonListener implements ItemListener {
+public class UnitSemesterComboBoxButtonListener implements ItemListener {
     private String key;
     private JButton update;
 
-    public ComboBoxButtonListener(String key, JButton update) {
+    public UnitSemesterComboBoxButtonListener(String key, JButton update) {
         this.key = key;
         this.update = update;
     }
@@ -23,7 +25,8 @@ public class ComboBoxButtonListener implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
             JComboBox comboBox = (JComboBox) e.getSource();
-            this.update.putClientProperty(key, comboBox.getSelectedItem().toString());
+            Unit u = (Unit) comboBox.getSelectedItem();
+            this.update.putClientProperty(key, u.getID());
         }
     }
 }

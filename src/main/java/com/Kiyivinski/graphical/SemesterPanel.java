@@ -34,7 +34,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         this.panelMiddle = new JScrollPane(unitSemesterTable);
         this.panelRight = new JPanel();
 
-        SpringLayout semesterForm = new SemesterForm(panelRight, this);
+        SpringLayout semesterForm = new SemesterForm(panelRight, this, this);
         panelRight.setLayout(semesterForm);
 
         this.initializeLeftTable();
@@ -96,10 +96,10 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         panelRight.removeAll();
         SpringLayout rightPane;
         if (id.equals("0")) {
-            rightPane = new SemesterForm(panelRight, this);
+            rightPane = new SemesterForm(panelRight, this, this);
         } else {
             Semester semester = Semester.find(id);
-            rightPane = new SemesterForm(panelRight, semester, this);
+            rightPane = new SemesterForm(panelRight, semester, this, this);
             this.initializeMiddleTable(id);
         }
         panelRight.setLayout(rightPane);
@@ -139,14 +139,27 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
     }
 
     public void createUnitSemester(String unit_id, String semester_id) {
-
+        this.connect();
+        try {
+            UnitSemester unitSemester = UnitSemester.create(unit_id, semester_id);
+            unitSemesterTable.addRow(unitSemester);
+        } catch (Exception e) {
+            System.out.println("Fail");
+        }
     }
 
-    public void modifyUnitSemester(String id, String unit_id, String semester_id) {
-
-    }
-
-    public void deleteUnitSemester(String id) {
-
+    public void deleteUnitSemester(String unit_id, String semester_id) {
+        this.connect();
+        List<UnitSemester> deleteUnitSemester = UnitSemester.whereSemester(semester_id);
+        try {
+            for (UnitSemester u: deleteUnitSemester) {
+                if (u.getUnitID().equals(unit_id)) {
+                    u.delete();
+                }
+            }
+            this.semesterTable.setRowSelectionInterval(0, 0);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
