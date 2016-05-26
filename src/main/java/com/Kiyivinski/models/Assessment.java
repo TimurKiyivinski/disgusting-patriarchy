@@ -1,20 +1,20 @@
 package com.Kiyivinski.models;
 
 import com.Kiyivinski.interfaces.SemesterInterface;
-import com.Kiyivinski.interfaces.TypeInterface;
+import com.Kiyivinski.interfaces.UnitInterface;
+import com.Kiyivinski.interfaces.UnitSemesterInterface;
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.Table;
 
 import java.util.List;
 
 @Table("assessments")
-public class Assessment extends Model implements TypeInterface, SemesterInterface {
-    public static Assessment create(String name, String mark, String type_id, String semester_id) {
+public class Assessment extends Model implements UnitSemesterInterface, UnitInterface, SemesterInterface {
+    public static Assessment create(String name, String mark, String unit_semester_id) {
         Assessment assessment = new Assessment();
         assessment.set("name", name);
         assessment.set("mark", mark);
-        assessment.set("type_id", type_id);
-        assessment.set("semester_id", semester_id);
+        assessment.set("unit_semester_id", unit_semester_id);
         assessment.saveIt();
         return assessment;
     }
@@ -36,12 +36,20 @@ public class Assessment extends Model implements TypeInterface, SemesterInterfac
         return this.get("mark").toString();
     }
 
-    public String getTypeID() {
-        return this.get("type_id").toString();
+    public String getUnitSemesterID() {
+        return this.get("unit_semester_id").toString();
     }
 
-    public Type getType() {
-        return Type.find(this.getTypeID());
+    public UnitSemester getUnitSemester() {
+        return UnitSemester.find(this.getUnitSemesterID());
+    }
+
+    public String getUnitID() {
+        return this.getUnitSemester().getUnitID();
+    }
+
+    public Unit getUnit() {
+        return this.getUnitSemester().getUnit();
     }
 
     public String getSemesterID() {
@@ -51,7 +59,6 @@ public class Assessment extends Model implements TypeInterface, SemesterInterfac
     public Semester getSemester() {
         return Semester.find(this.getSemesterID());
     }
-    // TODO: Implement from interface
     // endregion
 
     // region SETTER
@@ -61,10 +68,6 @@ public class Assessment extends Model implements TypeInterface, SemesterInterfac
 
     public void setMark(String mark) {
         this.set("mark", mark).saveIt();
-    }
-
-    public void setType(String type_id) {
-        this.set("type_id", type_id).saveIt();
     }
 
     public void setSemester(String semester_id) {
@@ -84,10 +87,6 @@ public class Assessment extends Model implements TypeInterface, SemesterInterfac
 
     public static List<Assessment> whereMark(String mark) {
         return Assessment.where("mark = '" + mark + "'");
-    }
-
-    public static List<Assessment> whereType(String type_id) {
-        return Assessment.where("type_id = '" + type_id + "'");
     }
 
     public static List<Assessment> whereSemester(String semester_id) {

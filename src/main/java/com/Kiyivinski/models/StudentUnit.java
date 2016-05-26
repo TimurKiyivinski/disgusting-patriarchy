@@ -3,18 +3,18 @@ package com.Kiyivinski.models;
 import com.Kiyivinski.interfaces.SemesterInterface;
 import com.Kiyivinski.interfaces.StudentInterface;
 import com.Kiyivinski.interfaces.UnitInterface;
+import com.Kiyivinski.interfaces.UnitSemesterInterface;
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.Table;
 
 import java.util.List;
 
 @Table("student_units")
-public class StudentUnit extends Model implements StudentInterface, UnitInterface, SemesterInterface {
-    public static StudentUnit create(String student_id, String unit_id, String semester_id) {
+public class StudentUnit extends Model implements StudentInterface, UnitSemesterInterface, UnitInterface, SemesterInterface {
+    public static StudentUnit create(String student_id, String unit_semester_id) {
         StudentUnit studentUnit = new StudentUnit();
         studentUnit.set("student_id", student_id);
-        studentUnit.set("unit_id", unit_id);
-        studentUnit.set("semester_id", semester_id);
+        studentUnit.set("unit_semester_id", unit_semester_id);
         studentUnit.saveIt();
         return studentUnit;
     }
@@ -36,34 +36,38 @@ public class StudentUnit extends Model implements StudentInterface, UnitInterfac
         return Student.find(this.getStudentID());
     }
 
+    public String getUnitSemesterID() {
+        return this.get("unit_semester_id").toString();
+    }
+
+    public UnitSemester getUnitSemester() {
+        return UnitSemester.find(this.getUnitSemesterID());
+    }
+
     public String getUnitID() {
-        return this.get("unit_id").toString();
+        return this.getUnitSemester().getUnitID();
     }
 
     public Unit getUnit() {
-        return Unit.find(this.getUnitID());
+        return this.getUnitSemester().getUnit();
     }
 
     public String getSemesterID() {
-        return this.get("semester_Id").toString();
+        return this.getUnitSemester().getSemesterID();
     }
 
     public Semester getSemester() {
-        return Semester.find(this.getSemesterID());
+        return this.getUnitSemester().getSemester();
     }
     // endregion
 
     // region SETTER
-    public void setUnit(String unit_id) {
-        this.set("unit_id", unit_id).saveIt();
+    public void setUnitSemester(String unit_semester_id) {
+        this.set("unit_semester_id", unit_semester_id).saveIt();
     }
 
-    public void setAssessment(String assessment_id) {
-        this.set("assessment_id", assessment_id).saveIt();
-    }
-
-    public void setSemester(String semester_id) {
-        this.set("semester_id", semester_id).saveIt();
+    public void setStudent(String student_id) {
+        this.set("student_id", student_id).saveIt();
     }
     // endregion
 
@@ -77,12 +81,8 @@ public class StudentUnit extends Model implements StudentInterface, UnitInterfac
         return StudentUnit.where("student_id = '" + student_id + "'");
     }
 
-    public static List<StudentUnit> whereUnit(String unit_id) {
-        return StudentUnit.where("unit_id = '" + unit_id + "'");
-    }
-
-    public static List<StudentUnit> whereSemester(String semester_id) {
-        return StudentUnit.where("semester_id = '" + semester_id + "'");
+    public static List<StudentUnit> whereUnitSemester(String unit_semester_id) {
+        return StudentUnit.where("unit_semester_id = '" + unit_semester_id + "'");
     }
     // endregion
 }

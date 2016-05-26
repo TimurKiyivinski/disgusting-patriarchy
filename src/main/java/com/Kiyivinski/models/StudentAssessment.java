@@ -9,11 +9,10 @@ import java.util.List;
 
 @Table("student_assessments")
 public class StudentAssessment extends Model implements StudentInterface, AssessmentInterface {
-    public static StudentAssessment create(String student_id, String assessment_id, String grade) {
+    public static StudentAssessment create(String student_id, String assessment_id) {
         StudentAssessment studentAssessment = new StudentAssessment();
         studentAssessment.set("student_id", student_id);
         studentAssessment.set("assessment_id", assessment_id);
-        studentAssessment.set("grade", grade);
         studentAssessment.saveIt();
         return studentAssessment;
     }
@@ -25,10 +24,6 @@ public class StudentAssessment extends Model implements StudentInterface, Assess
     // region GETTER
     public String getID() {
         return this.get("id").toString();
-    }
-
-    public String getGrade() {
-        return this.get("grade").toString();
     }
 
     public String getStudentID() {
@@ -56,10 +51,6 @@ public class StudentAssessment extends Model implements StudentInterface, Assess
     public void setAssessment(String assessment_id) {
         this.set("assessment_id", assessment_id).saveIt();
     }
-
-    public void setGrade(String grade) {
-        this.set("grade", grade).saveIt();
-    }
     // endregion
 
     // region QUERY
@@ -74,10 +65,6 @@ public class StudentAssessment extends Model implements StudentInterface, Assess
 
     public List<UnitSemester> whereAssessment(String assessment_id) {
         return StudentAssessment.where("assessment_id = '" + assessment_id + "'");
-    }
-
-    public List<StudentAssessment> whereGrade(String grade) {
-        return StudentAssessment.where("grade = '" + grade + "'");
     }
     // endregion
 }
