@@ -39,14 +39,16 @@ public class MainFrame extends JFrame implements ConnectInterface {
         UnitPanel unitPanel = new UnitPanel();
         unitPanel.setConnect(this.database, this.user, this.password);
 
+        SemesterPanel semesterPanel = new SemesterPanel();
+        semesterPanel.setConnect(this.database, this.user, this.password);
+
         JPanel assessmentPanel = new AssessmentPanel();
-        JPanel semesterPanel = new SemesterPanel();
         JPanel coursePanel = new CoursePanel();
 
         this.layout.addTab("Student", studentPanel);
         this.layout.addTab("Units", unitPanel);
-        this.layout.addTab("Assessment", assessmentPanel);
         this.layout.addTab("Semesters", semesterPanel);
+        this.layout.addTab("Assessment", assessmentPanel);
         this.layout.addTab("Courses", coursePanel);
     }
 
