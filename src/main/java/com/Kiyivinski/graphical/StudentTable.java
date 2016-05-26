@@ -1,7 +1,7 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.ModelTableRowListener;
 import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
-import com.Kiyivinski.graphical.listeners.StudentTableRowListener;
 import com.Kiyivinski.models.Student;
 
 public class StudentTable extends ModelTable {
@@ -10,7 +10,7 @@ public class StudentTable extends ModelTable {
         super.addColumn("Name");
         super.addColumn("Identification");
         super.addColumn("Course");
-        this.getSelectionModel().addListSelectionListener(new StudentTableRowListener(this, observer));
+        this.getSelectionModel().addListSelectionListener(new ModelTableRowListener(this, observer));
     }
 
     public void addCreate() {

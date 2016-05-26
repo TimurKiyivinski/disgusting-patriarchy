@@ -1,6 +1,6 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.UnitTableRowListener;
+import com.Kiyivinski.graphical.listeners.ModelTableRowListener;
 import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.models.Unit;
 
@@ -9,7 +9,7 @@ public class UnitTable extends ModelTable {
         super.addColumn("id");
         super.addColumn("Name");
         super.addColumn("Code");
-        this.getSelectionModel().addListSelectionListener(new UnitTableRowListener(this, observer));
+        this.getSelectionModel().addListSelectionListener(new ModelTableRowListener(this, observer));
     }
 
     public void addCreate() {

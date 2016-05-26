@@ -1,16 +1,16 @@
 package com.Kiyivinski.graphical.listeners;
 
-import com.Kiyivinski.graphical.StudentTable;
+import com.Kiyivinski.graphical.ModelTable;
 import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class StudentTableRowListener implements ListSelectionListener {
-    private StudentTable table;
+public class ModelTableRowListener implements ListSelectionListener {
+    private ModelTable table;
     private ModelTableInterface observer;
 
-    public StudentTableRowListener(StudentTable table, ModelTableInterface observer) {
+    public ModelTableRowListener(ModelTable table, ModelTableInterface observer) {
         this.table = table;
         this.observer = observer;
     }
