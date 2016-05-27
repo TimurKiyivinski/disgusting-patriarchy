@@ -22,7 +22,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
     private String user;
     private String password;
     private SemesterTable semesterTable;
-    private UnitSemesterTable unitSemesterTable;
+    private UnitSemesterUnitTable unitSemesterUnitTable;
 
     /**
      * Instantiates a new Semester panel.
@@ -34,10 +34,10 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         this.setLayout(layout);
 
         this.semesterTable = new SemesterTable(this);
-        this.unitSemesterTable = new UnitSemesterTable();
+        this.unitSemesterUnitTable = new UnitSemesterUnitTable();
 
         this.panelLeft = new JScrollPane(semesterTable);
-        this.panelMiddle = new JScrollPane(unitSemesterTable);
+        this.panelMiddle = new JScrollPane(unitSemesterUnitTable);
         this.panelRight = new JPanel();
 
         SpringLayout semesterForm = new SemesterForm(panelRight, this, this);
@@ -78,7 +78,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
      */
     public void initializeMiddleTable(String semester_id) {
         this.connect();
-        DefaultTableModel model = (DefaultTableModel) this.unitSemesterTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.unitSemesterUnitTable.getModel();
 
         try {
             model.setRowCount(0);
@@ -86,10 +86,10 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
             // Do not fail
         }
 
-        this.unitSemesterTable.addCreate();
+        this.unitSemesterUnitTable.addCreate();
         List<UnitSemester> unitSemesters = UnitSemester.whereSemester(semester_id);
         for (UnitSemester s : unitSemesters) {
-            this.unitSemesterTable.addRow(s);
+            this.unitSemesterUnitTable.addRow(s);
         }
     }
 
@@ -156,7 +156,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         this.connect();
         try {
             UnitSemester unitSemester = UnitSemester.create(unit_id, semester_id);
-            unitSemesterTable.addRow(unitSemester);
+            unitSemesterUnitTable.addRow(unitSemester);
         } catch (Exception e) {
             System.out.println("Fail");
         }

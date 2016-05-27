@@ -36,6 +36,10 @@ public class UnitSemester extends Model implements UnitInterface, SemesterInterf
         return UnitSemester.findAll();
     }
 
+    public String toString() {
+        return this.getUnit().getName() + ", " + this.getSemester().getName();
+    }
+
     /**
      * Gets id.
      *
