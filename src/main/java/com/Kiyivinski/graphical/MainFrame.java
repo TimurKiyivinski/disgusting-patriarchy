@@ -77,12 +77,16 @@ public class MainFrame extends JFrame implements ConnectInterface {
     }
 
     public void setConnect(String database, String user, String password) {
-        this.database = database;
-        this.user = user;
-        this.password = password;
+        if (database.equals("FAILURE")) {
+            JOptionPane.showMessageDialog(this, "Connection Failed");
+        } else {
+            this.database = database;
+            this.user = user;
+            this.password = password;
 
-        this.layout.removeTabAt(0);
-        this.createMainLayout();
+            this.layout.removeTabAt(0);
+            this.createMainLayout();
+        }
     }
 
     public void connect() {

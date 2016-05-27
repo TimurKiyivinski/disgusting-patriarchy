@@ -77,6 +77,7 @@ public class LoginButtonListener implements ActionListener {
                 this.inputUser.setForeground(Color.RED);
                 this.inputPassword.setForeground(Color.RED);
                 submit.setText("Retry Connection");
+                this.observer.setConnect("FAILURE", user, password);
             }
         }
     }
