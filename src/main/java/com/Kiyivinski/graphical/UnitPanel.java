@@ -74,7 +74,7 @@ public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInt
     }
 
     public void connect() {
-        if (! Base.hasConnection()) {
+        if (!Base.hasConnection()) {
             Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
         }
     }
@@ -100,6 +100,7 @@ public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInt
             unitTable.addRow(unit);
         } catch (Exception e) {
             System.out.println("Fail");
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 
@@ -112,6 +113,7 @@ public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInt
             this.initializeLeftTable();
         } catch (Exception e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 
@@ -123,6 +125,7 @@ public class UnitPanel extends JPanel implements ConnectInterface, ModelTableInt
             this.initializeLeftTable();
         } catch (Exception e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 }

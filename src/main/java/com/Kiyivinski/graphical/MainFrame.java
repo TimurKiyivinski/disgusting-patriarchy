@@ -1,11 +1,14 @@
 package com.Kiyivinski.graphical;
 
+import com.Kiyivinski.graphical.listeners.MainMouseListener;
 import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
 import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * The type Main frame.
@@ -15,12 +18,13 @@ public class MainFrame extends JFrame implements ConnectInterface {
     private String database;
     private String user;
     private String password;
+    private final String title = "FOCUS ON TITLE TO DISCOVER DEVELOPER";
 
     /**
      * Instantiates a new Main frame.
      */
     public MainFrame() {
-        this.setTitle("Java Assignment 2 - 4316886 Timothy Kiyui");
+        this.setTitle(this.title);
         this.setSize(1024, 800);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,6 +42,8 @@ public class MainFrame extends JFrame implements ConnectInterface {
         mainMenu.add(mainMenuExit);
         menuBar.add(mainMenu);
         this.setJMenuBar(menuBar);
+
+        this.addMouseListener(new MainMouseListener(this));
 
         this.layout = new JTabbedPane();
         this.add(layout);
@@ -91,7 +97,7 @@ public class MainFrame extends JFrame implements ConnectInterface {
     }
 
     public void connect() {
-        if (! Base.hasConnection()) {
+        if (!Base.hasConnection()) {
             Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
         }
     }

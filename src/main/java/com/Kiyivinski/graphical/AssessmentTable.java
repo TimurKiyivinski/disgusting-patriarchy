@@ -10,6 +10,8 @@ import com.Kiyivinski.models.Assessment;
 public class AssessmentTable extends ModelTable {
     /**
      * Instantiates a new Unit semester table.
+     *
+     * @param observer the observer
      */
     public AssessmentTable(ModelTableInterface observer) {
         super.addColumn("id");
@@ -28,7 +30,7 @@ public class AssessmentTable extends ModelTable {
      * @param assessment the assessment
      */
     public void addRow(Assessment assessment) {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 assessment.getID(),
                 assessment.getName(),
                 assessment.getMark()

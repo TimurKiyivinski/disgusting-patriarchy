@@ -22,7 +22,7 @@ public class StudentTable extends ModelTable {
     }
 
     public void addCreate() {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 "0", "Create Student", "000000", ""
         };
         super.addRow(row);
@@ -34,7 +34,7 @@ public class StudentTable extends ModelTable {
      * @param student the student
      */
     public void addRow(Student student) {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 student.getID(),
                 student.getName(),
                 student.getIdentification(),

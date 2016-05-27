@@ -24,7 +24,7 @@ public class UnitSemesterUnitTable extends ModelTable {
      * @param unit the unit
      */
     public void addRow(UnitSemester unit) {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 unit.getUnitID(),
                 unit.getUnit().getName(),
         };

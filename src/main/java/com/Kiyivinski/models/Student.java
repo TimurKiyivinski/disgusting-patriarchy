@@ -61,8 +61,7 @@ public class Student extends Model implements CourseInterface {
      *
      * @return the identification
      */
-    public String getIdentification()
-    {
+    public String getIdentification() {
         return this.get("identification").toString();
     }
 

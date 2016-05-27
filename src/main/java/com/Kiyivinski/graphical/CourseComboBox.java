@@ -14,7 +14,7 @@ public class CourseComboBox extends JComboBox {
      */
     CourseComboBox() {
         List<Course> courses = Course.all();
-        for (Course c: courses) {
+        for (Course c : courses) {
             this.addItem(c.getName());
         }
     }

@@ -32,14 +32,14 @@ public class StudentForm extends SpringLayout {
         JButton submit;
         if (modifyStudent == null) {
             submit = new JButton("Create");
-            inputName  = new JTextField("Student Name", this.TEXT_LENGTH);
+            inputName = new JTextField("Student Name", this.TEXT_LENGTH);
             inputIdentification = new JTextField("000000", this.TEXT_LENGTH);
             submit.putClientProperty("id", "0");
         } else {
             submit = new JButton("Modify");
             JButton delete = new JButton("Delete");
 
-            inputName  = new JTextField(modifyStudent.getName(), this.TEXT_LENGTH);
+            inputName = new JTextField(modifyStudent.getName(), this.TEXT_LENGTH);
             inputIdentification = new JTextField(modifyStudent.getIdentification(), this.TEXT_LENGTH);
             inputCourse.setSelectedItem(modifyStudent.getCourse().getName());
 
@@ -67,14 +67,14 @@ public class StudentForm extends SpringLayout {
         this.putConstraint(SpringLayout.WEST, inputName, 30, SpringLayout.EAST, labelName);
         this.putConstraint(SpringLayout.NORTH, inputName, -2, SpringLayout.NORTH, labelName);
 
-        this.putConstraint(SpringLayout.WEST , labelIdentification, 5, SpringLayout.WEST, parent);
+        this.putConstraint(SpringLayout.WEST, labelIdentification, 5, SpringLayout.WEST, parent);
         this.putConstraint(SpringLayout.NORTH, labelIdentification, 30, SpringLayout.NORTH, labelName);
-        this.putConstraint(SpringLayout.WEST , inputIdentification, 0, SpringLayout.WEST, inputName);
+        this.putConstraint(SpringLayout.WEST, inputIdentification, 0, SpringLayout.WEST, inputName);
         this.putConstraint(SpringLayout.NORTH, inputIdentification, 28, SpringLayout.NORTH, inputName);
 
-        this.putConstraint(SpringLayout.WEST , labelCourse, 5, SpringLayout.WEST, parent);
+        this.putConstraint(SpringLayout.WEST, labelCourse, 5, SpringLayout.WEST, parent);
         this.putConstraint(SpringLayout.NORTH, labelCourse, 30, SpringLayout.NORTH, labelIdentification);
-        this.putConstraint(SpringLayout.WEST , inputCourse, 0, SpringLayout.WEST, inputIdentification);
+        this.putConstraint(SpringLayout.WEST, inputCourse, 0, SpringLayout.WEST, inputIdentification);
         this.putConstraint(SpringLayout.NORTH, inputCourse, 28, SpringLayout.NORTH, inputIdentification);
 
         this.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, inputCourse);

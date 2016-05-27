@@ -1,7 +1,7 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.LoginButtonListener;
 import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
+import com.Kiyivinski.graphical.listeners.LoginButtonListener;
 import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
 
 import javax.swing.*;
@@ -12,13 +12,13 @@ import javax.swing.*;
 public class LoginForm extends SpringLayout {
     private final int TEXT_LENGTH = 48;
 
-        /**
-         * Instantiates a new Login form.
-         *
-         * @param parent   the parent
-         * @param observer the observer
-         */
-        public LoginForm(JPanel parent, ConnectInterface observer) {
+    /**
+     * Instantiates a new Login form.
+     *
+     * @param parent   the parent
+     * @param observer the observer
+     */
+    public LoginForm(JPanel parent, ConnectInterface observer) {
         JLabel labelDatabase = new JLabel("Database Address:");
         JTextField inputDatabase = new JTextField("192.168.99.100:3306/java", this.TEXT_LENGTH);
         JLabel labelUser = new JLabel("Username:");
@@ -40,14 +40,14 @@ public class LoginForm extends SpringLayout {
         this.putConstraint(SpringLayout.WEST, inputDatabase, 5, SpringLayout.EAST, labelDatabase);
         this.putConstraint(SpringLayout.NORTH, inputDatabase, -2, SpringLayout.NORTH, labelDatabase);
 
-        this.putConstraint(SpringLayout.WEST , labelUser, 5, SpringLayout.WEST, parent);
+        this.putConstraint(SpringLayout.WEST, labelUser, 5, SpringLayout.WEST, parent);
         this.putConstraint(SpringLayout.NORTH, labelUser, 30, SpringLayout.NORTH, labelDatabase);
-        this.putConstraint(SpringLayout.WEST , inputUser, 0, SpringLayout.WEST, inputDatabase);
+        this.putConstraint(SpringLayout.WEST, inputUser, 0, SpringLayout.WEST, inputDatabase);
         this.putConstraint(SpringLayout.NORTH, inputUser, 28, SpringLayout.NORTH, inputDatabase);
 
-        this.putConstraint(SpringLayout.WEST , labelPassword, 5, SpringLayout.WEST, parent);
+        this.putConstraint(SpringLayout.WEST, labelPassword, 5, SpringLayout.WEST, parent);
         this.putConstraint(SpringLayout.NORTH, labelPassword, 30, SpringLayout.NORTH, labelUser);
-        this.putConstraint(SpringLayout.WEST , inputPassword, 0, SpringLayout.WEST, inputUser);
+        this.putConstraint(SpringLayout.WEST, inputPassword, 0, SpringLayout.WEST, inputUser);
         this.putConstraint(SpringLayout.NORTH, inputPassword, 28, SpringLayout.NORTH, inputUser);
 
         this.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, inputPassword);

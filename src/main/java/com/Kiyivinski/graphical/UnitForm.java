@@ -29,14 +29,14 @@ public class UnitForm extends SpringLayout {
         JButton submit;
         if (modifyUnit == null) {
             submit = new JButton("Create");
-            inputName  = new JTextField("Unit Name", this.TEXT_LENGTH);
+            inputName = new JTextField("Unit Name", this.TEXT_LENGTH);
             inputCode = new JTextField("000", this.TEXT_LENGTH);
             submit.putClientProperty("id", "0");
         } else {
             submit = new JButton("Modify");
             JButton delete = new JButton("Delete");
 
-            inputName  = new JTextField(modifyUnit.getName(), this.TEXT_LENGTH);
+            inputName = new JTextField(modifyUnit.getName(), this.TEXT_LENGTH);
             inputCode = new JTextField(modifyUnit.getCode(), this.TEXT_LENGTH);
 
             submit.putClientProperty("id", modifyUnit.getID());
@@ -61,9 +61,9 @@ public class UnitForm extends SpringLayout {
         this.putConstraint(SpringLayout.WEST, inputName, 30, SpringLayout.EAST, labelName);
         this.putConstraint(SpringLayout.NORTH, inputName, -2, SpringLayout.NORTH, labelName);
 
-        this.putConstraint(SpringLayout.WEST , labelCode, 5, SpringLayout.WEST, parent);
+        this.putConstraint(SpringLayout.WEST, labelCode, 5, SpringLayout.WEST, parent);
         this.putConstraint(SpringLayout.NORTH, labelCode, 30, SpringLayout.NORTH, labelName);
-        this.putConstraint(SpringLayout.WEST , inputCode, 0, SpringLayout.WEST, inputName);
+        this.putConstraint(SpringLayout.WEST, inputCode, 0, SpringLayout.WEST, inputName);
         this.putConstraint(SpringLayout.NORTH, inputCode, 28, SpringLayout.NORTH, inputName);
 
         this.putConstraint(SpringLayout.EAST, submit, 0, SpringLayout.EAST, inputCode);

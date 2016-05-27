@@ -1,8 +1,8 @@
 package com.Kiyivinski.graphical;
 
 import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
-import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.graphical.listeners.interfaces.CourseDatabaseInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
 import com.Kiyivinski.models.Course;
 import org.javalite.activejdbc.Base;
 
@@ -74,7 +74,7 @@ public class CoursePanel extends JPanel implements ConnectInterface, ModelTableI
     }
 
     public void connect() {
-        if (! Base.hasConnection()) {
+        if (!Base.hasConnection()) {
             Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
         }
     }

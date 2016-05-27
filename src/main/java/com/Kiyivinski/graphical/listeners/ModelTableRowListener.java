@@ -30,7 +30,7 @@ public class ModelTableRowListener implements ListSelectionListener {
      * @param e the event that characterizes the change.
      */
     public void valueChanged(ListSelectionEvent e) {
-        if (! e.getValueIsAdjusting()) {
+        if (!e.getValueIsAdjusting()) {
             String id = table.getValueAt(table.getSelectedRow(), 0).toString();
             observer.updateModelForm(id);
         }

@@ -20,7 +20,7 @@ public class SemesterTable extends ModelTable {
     }
 
     public void addCreate() {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 "0", "Create Semester"
         };
         super.addRow(row);
@@ -32,7 +32,7 @@ public class SemesterTable extends ModelTable {
      * @param semester the semester
      */
     public void addRow(Semester semester) {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 semester.getID(),
                 semester.getName()
         };

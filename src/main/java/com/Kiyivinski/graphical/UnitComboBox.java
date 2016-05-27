@@ -14,7 +14,7 @@ public class UnitComboBox extends JComboBox {
      */
     UnitComboBox() {
         List<Unit> units = Unit.all();
-        for (Unit u: units) {
+        for (Unit u : units) {
             this.addItem(u);
         }
     }

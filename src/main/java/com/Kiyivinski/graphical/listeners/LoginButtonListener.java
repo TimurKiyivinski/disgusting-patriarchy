@@ -27,7 +27,7 @@ public class LoginButtonListener implements ActionListener {
      */
     public LoginButtonListener(JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, ConnectInterface observer) {
         this.inputDatabase = inputDatabase;
-        this.inputUser= inputUser;
+        this.inputUser = inputUser;
         this.inputPassword = inputPassword;
         this.observer = observer;
     }
@@ -57,10 +57,10 @@ public class LoginButtonListener implements ActionListener {
          * @param inputPassword the input password
          * @param observer      the observer
          */
-        login(JButton submit,JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, ConnectInterface observer) {
+        login(JButton submit, JTextField inputDatabase, JTextField inputUser, JTextField inputPassword, ConnectInterface observer) {
             this.submit = submit;
             this.inputDatabase = inputDatabase;
-            this.inputUser= inputUser;
+            this.inputUser = inputUser;
             this.inputPassword = inputPassword;
             this.observer = observer;
         }

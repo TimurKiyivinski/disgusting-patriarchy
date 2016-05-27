@@ -5,7 +5,7 @@ package com.Kiyivinski.graphical.listeners.interfaces;
  */
 public interface ConnectInterface {
     /**
-     * Sets connect.
+     * Sets connection.
      *
      * @param database the database
      * @param user     the user

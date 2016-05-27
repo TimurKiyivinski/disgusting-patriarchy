@@ -1,6 +1,5 @@
 package com.Kiyivinski.graphical.listeners;
 
-import com.Kiyivinski.graphical.listeners.interfaces.UnitDatabaseInterface;
 import com.Kiyivinski.graphical.listeners.interfaces.UnitSemesterDatabaseInterface;
 
 import javax.swing.*;

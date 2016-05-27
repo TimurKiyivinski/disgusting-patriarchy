@@ -31,7 +31,7 @@ public abstract class ModelTable extends JTable {
      *
      * @param row the row
      */
-    protected void addRow(Object [] row) {
+    protected void addRow(Object[] row) {
         this.model.addRow(row);
     }
 

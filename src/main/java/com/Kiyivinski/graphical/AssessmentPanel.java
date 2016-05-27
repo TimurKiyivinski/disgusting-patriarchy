@@ -26,6 +26,9 @@ public class AssessmentPanel extends JPanel implements ConnectInterface, ModelTa
     private UnitSemesterTable unitSemesterTable;
     private AssessmentTable assessmentTable;
 
+    /**
+     * Instantiates a new Assessment panel.
+     */
     public AssessmentPanel() {
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -44,6 +47,9 @@ public class AssessmentPanel extends JPanel implements ConnectInterface, ModelTa
         this.add(panelMiddle);
     }
 
+    /**
+     * Initialize left table.
+     */
     public void initializeLeftTable() {
         this.connect();
         DefaultTableModel model = (DefaultTableModel) this.unitSemesterTable.getModel();
@@ -61,6 +67,11 @@ public class AssessmentPanel extends JPanel implements ConnectInterface, ModelTa
         this.unitSemesterTable.setRowSelectionInterval(0, 0);
     }
 
+    /**
+     * Initialize middle table.
+     *
+     * @param unit_semester_id the unit semester id
+     */
     public void initializeMiddleTable(String unit_semester_id) {
         this.connect();
         DefaultTableModel model = (DefaultTableModel) this.assessmentTable.getModel();
@@ -95,7 +106,7 @@ public class AssessmentPanel extends JPanel implements ConnectInterface, ModelTa
      * Connect.
      */
     public void connect() {
-        if (! Base.hasConnection()) {
+        if (!Base.hasConnection()) {
             Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
         }
     }

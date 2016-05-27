@@ -1,7 +1,7 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
 import com.Kiyivinski.graphical.listeners.CourseFormCreateListener;
+import com.Kiyivinski.graphical.listeners.InputFieldButtonListener;
 import com.Kiyivinski.graphical.listeners.interfaces.CourseDatabaseInterface;
 import com.Kiyivinski.models.Course;
 

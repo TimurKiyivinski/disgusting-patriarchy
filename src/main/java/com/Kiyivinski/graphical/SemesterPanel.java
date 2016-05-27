@@ -1,6 +1,9 @@
 package com.Kiyivinski.graphical;
 
-import com.Kiyivinski.graphical.listeners.interfaces.*;
+import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.ModelTableInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.SemesterDatabaseInterface;
+import com.Kiyivinski.graphical.listeners.interfaces.UnitSemesterDatabaseInterface;
 import com.Kiyivinski.models.Semester;
 import com.Kiyivinski.models.UnitSemester;
 import org.javalite.activejdbc.Base;
@@ -100,7 +103,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
     }
 
     public void connect() {
-        if (! Base.hasConnection()) {
+        if (!Base.hasConnection()) {
             Base.open("org.mariadb.jdbc.Driver", "jdbc:mariadb://" + database, user, password);
         }
     }
@@ -127,6 +130,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
             semesterTable.addRow(semester);
         } catch (Exception e) {
             System.out.println("Fail");
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 
@@ -138,6 +142,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
             this.initializeLeftTable();
         } catch (Exception e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 
@@ -149,6 +154,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
             this.initializeLeftTable();
         } catch (Exception e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 
@@ -159,6 +165,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
             unitSemesterUnitTable.addRow(unitSemester);
         } catch (Exception e) {
             System.out.println("Fail");
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 
@@ -166,7 +173,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
         this.connect();
         List<UnitSemester> deleteUnitSemester = UnitSemester.whereSemester(semester_id);
         try {
-            for (UnitSemester u: deleteUnitSemester) {
+            for (UnitSemester u : deleteUnitSemester) {
                 if (u.getUnitID().equals(unit_id)) {
                     u.delete();
                 }
@@ -174,6 +181,7 @@ public class SemesterPanel extends JPanel implements ConnectInterface, ModelTabl
             this.semesterTable.setRowSelectionInterval(0, 0);
         } catch (Exception e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Invalid Input");
         }
     }
 }

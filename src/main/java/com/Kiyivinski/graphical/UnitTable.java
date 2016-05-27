@@ -21,7 +21,7 @@ public class UnitTable extends ModelTable {
     }
 
     public void addCreate() {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 "0", "Create Unit", "000"
         };
         super.addRow(row);
@@ -33,7 +33,7 @@ public class UnitTable extends ModelTable {
      * @param unit the unit
      */
     public void addRow(Unit unit) {
-        Object [] row = new Object[]{
+        Object[] row = new Object[]{
                 unit.getID(),
                 unit.getName(),
                 unit.getCode()
