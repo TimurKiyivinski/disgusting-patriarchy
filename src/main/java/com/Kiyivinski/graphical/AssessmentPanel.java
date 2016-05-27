@@ -18,7 +18,7 @@ public class AssessmentPanel extends JPanel implements ConnectInterface, ModelTa
      * @param password the password
      */
     public void setConnect(String database, String user, String password) {
-        
+
     }
 
     /**

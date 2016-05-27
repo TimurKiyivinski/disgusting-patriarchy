@@ -4,6 +4,8 @@ import com.Kiyivinski.graphical.listeners.interfaces.ConnectInterface;
 import org.javalite.activejdbc.Base;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * The type Main frame.
@@ -22,6 +24,20 @@ public class MainFrame extends JFrame implements ConnectInterface {
         this.setSize(1024, 800);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu mainMenu = new JMenu("Program");
+        JMenuItem mainMenuExit = new JMenuItem("Exit");
+        mainMenuExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Base.close();
+                System.exit(0);
+            }
+        });
+
+        mainMenu.add(mainMenuExit);
+        menuBar.add(mainMenu);
+        this.setJMenuBar(menuBar);
 
         this.layout = new JTabbedPane();
         this.add(layout);
