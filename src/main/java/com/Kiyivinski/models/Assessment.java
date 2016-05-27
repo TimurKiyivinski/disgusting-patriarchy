@@ -156,11 +156,11 @@ public class Assessment extends Model implements UnitSemesterInterface, UnitInte
     /**
      * Where semester list.
      *
-     * @param semester_id the semester id
+     * @param unit_semester_id the unit semester id
      * @return the list
      */
-    public static List<Assessment> whereSemester(String semester_id) {
-        return Assessment.where("semester_id = '" + semester_id + "'");
+    public static List<Assessment> whereUnitSemester(String unit_semester_id) {
+        return Assessment.where("unit_semester_id = '" + unit_semester_id + "'");
     }
     // endregion
 }

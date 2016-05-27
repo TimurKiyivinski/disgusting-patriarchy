@@ -67,7 +67,8 @@ public class MainFrame extends JFrame implements ConnectInterface {
         CoursePanel coursePanel = new CoursePanel();
         coursePanel.setConnect(this.database, this.user, this.password);
 
-        JPanel assessmentPanel = new AssessmentPanel();
+        AssessmentPanel assessmentPanel = new AssessmentPanel();
+        assessmentPanel.setConnect(this.database, this.user, this.password);
 
         this.layout.addTab("Student", studentPanel);
         this.layout.addTab("Units", unitPanel);
